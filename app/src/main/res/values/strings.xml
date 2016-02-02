@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MobileSafe</string>
     <string name="button_run_scheduler">Run Schedulers Example</string>
+    <string name="version_code">版本号</string>
 </resources>
