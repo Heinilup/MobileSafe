@@ -1,8 +1,10 @@
 package ikabi.com.mobilesafe;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
+import android.os.Message;
 import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
@@ -13,13 +15,29 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 import ikabi.com.mobilesafe.utils.PackageUtils;
 
 public class WelcomeActivity extends Activity {
 
+    private static final int SHOW_ERROR = 0;
     private TextView mNameVersion;
     private String mDesc;
+
+
+    private Handler mHandler = new Handler() {
+      public void handleMessage(Message msg) {
+          int what = msg.what;
+          switch (what){
+              case SHOW_ERROR:
+                  break;
+              default:
+                  break;
+          }
+      }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +52,20 @@ public class WelcomeActivity extends Activity {
 
         checkVersionUpdate();
 
+        //enter to homepage
 
+        enterhomepage();
+
+
+
+    }
+
+    private void enterhomepage() {
+
+
+        Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void checkVersionUpdate() {
