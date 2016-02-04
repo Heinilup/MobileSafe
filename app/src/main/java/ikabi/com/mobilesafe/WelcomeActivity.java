@@ -1,6 +1,8 @@
 package ikabi.com.mobilesafe;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
@@ -9,22 +11,29 @@ import android.os.Message;
 import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Closeable;
 import java.io.IOException;
 
+import ikabi.com.mobilesafe.utils.LogUtils;
 import ikabi.com.mobilesafe.utils.PackageUtils;
 
 
 public class WelcomeActivity extends Activity {
 
+    private static final String TAG = "WelcomeActivity";
+
     private static final int SHOW_ERROR = 0;
+    private static final int SHOW_UPDATE_DIALOG = 1;
     private TextView mNameVersion;
     private String mDesc;
+    private String mUrl;
 
 
     private Handler mHandler = new Handler() {
@@ -32,12 +41,19 @@ public class WelcomeActivity extends Activity {
           int what = msg.what;
           switch (what){
               case SHOW_ERROR:
+                  LogUtils.d(TAG,"返回错误进入主页");
+                  enterhomepage();
+                  break;
+              case SHOW_UPDATE_DIALOG:
+                  showUpdateDialog();
                   break;
               default:
                   break;
           }
       }
     };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +66,7 @@ public class WelcomeActivity extends Activity {
         //show version code
         mNameVersion.setText(PackageUtils.getVersionName(this));
 
+
         checkVersionUpdate();
 
         //enter to homepage
@@ -58,6 +75,16 @@ public class WelcomeActivity extends Activity {
 
 
 
+    }
+    private void close (Closeable io){
+        if (io != null){
+            try {
+                io.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            io = null;
+        }
     }
 
     private void enterhomepage() {
@@ -73,7 +100,30 @@ public class WelcomeActivity extends Activity {
 
 
     }
+    private void showUpdateDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        builder.setCancelable(false);
+        builder.setTitle("版本更新提醒");
+
+        builder.setMessage(mDesc);
+        builder.setPositiveButton("立刻升级", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                //下载最新版本
+            }
+        });
+        builder.setPositiveButton("稍后再说", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                //进入主页
+                enterhomepage();
+            }
+        });
+
+    }
     private void checkVersionUpdate() {
         new Thread(new CheckVersionTask()).start();
     }
@@ -84,7 +134,10 @@ public class WelcomeActivity extends Activity {
             //implements for checkversion
             String uri = "http://869.8866.org/update.txt";
 
-            HttpClient client = AndroidHttpClient.newInstance("ikabi",getApplicationContext());
+            AndroidHttpClient client = AndroidHttpClient.newInstance("ikabi",getApplicationContext());
+            HttpParams params = client.getParams();
+            HttpConnectionParams.setConnectionTimeout(params, 25000);//设置访问网络超时时间
+            HttpConnectionParams.setSoTimeout(params, 10000);//设置读取超时时间
             HttpGet get = new HttpGet(uri);
             try {
                 HttpResponse response = client.execute(get);
@@ -98,20 +151,33 @@ public class WelcomeActivity extends Activity {
 
                     int localCode = PackageUtils.getVersionCode(getApplicationContext());
 
-                    JSONObject jsonObject = new JSONObject();
+                    JSONObject jsonObject = new JSONObject(result);
                     int netCode = jsonObject.getInt("versionCode");
+
+                    LogUtils.d(TAG, "netCode = " + netCode);
 
                     if (netCode > localCode){
                         mDesc = jsonObject.getString("desc");
 
+                        mUrl = jsonObject.getString("url");
 
-
-                    }
+                        Message msg = Message.obtain();
+                        msg.what = SHOW_UPDATE_DIALOG;
+                        mHandler.sendMessage(msg);
+                    } else {
+                        LogUtils.d(TAG,"不需要更新");
+                        enterhomepage();
+                }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
+            } finally {
+                if (client != null){
+                    client.close();
+                    client = null;
+                }
             }
         }
     }
