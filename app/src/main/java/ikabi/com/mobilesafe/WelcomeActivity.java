@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
 
@@ -15,10 +16,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 import ikabi.com.mobilesafe.utils.PackageUtils;
+
 
 public class WelcomeActivity extends Activity {
 
@@ -62,10 +62,16 @@ public class WelcomeActivity extends Activity {
 
     private void enterhomepage() {
 
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 2000);
 
-        Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
-        startActivity(intent);
-        finish();
+
     }
 
     private void checkVersionUpdate() {
