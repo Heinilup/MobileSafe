@@ -3,6 +3,7 @@ package ikabi.com.mobilesafe;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
@@ -21,8 +22,10 @@ import org.json.JSONObject;
 import java.io.Closeable;
 import java.io.IOException;
 
+import ikabi.com.mobilesafe.utils.Constants;
 import ikabi.com.mobilesafe.utils.LogUtils;
 import ikabi.com.mobilesafe.utils.PackageUtils;
+import ikabi.com.mobilesafe.utils.PreferenceUtils;
 
 
 public class WelcomeActivity extends Activity {
@@ -45,6 +48,7 @@ public class WelcomeActivity extends Activity {
                   enterhomepage();
                   break;
               case SHOW_UPDATE_DIALOG:
+                  LogUtils.d(TAG, "SHOW_UPDATE_DIALOG");
                   showUpdateDialog();
                   break;
               default:
@@ -66,15 +70,14 @@ public class WelcomeActivity extends Activity {
         //show version code
         mNameVersion.setText(PackageUtils.getVersionName(this));
 
-
-        checkVersionUpdate();
+        boolean update = PreferenceUtils.getBoolean(this, Constants.AUTO_UPDATE, true);
+        if(update){
+            checkVersionUpdate();
+        }else {
 
         //enter to homepage
-
         enterhomepage();
-
-
-
+        }
     }
     private void close (Closeable io){
         if (io != null){
@@ -102,19 +105,19 @@ public class WelcomeActivity extends Activity {
     }
     private void showUpdateDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
+        LogUtils.d(TAG, "showUpdateDialog");
         builder.setCancelable(false);
         builder.setTitle("版本更新提醒");
 
         builder.setMessage(mDesc);
-        builder.setPositiveButton("立刻升级", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("立刻升级", new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
                 //下载最新版本
             }
         });
-        builder.setPositiveButton("稍后再说", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("稍后再说", new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
@@ -122,6 +125,7 @@ public class WelcomeActivity extends Activity {
                 enterhomepage();
             }
         });
+        builder.show();
 
     }
     private void checkVersionUpdate() {
@@ -136,8 +140,8 @@ public class WelcomeActivity extends Activity {
 
             AndroidHttpClient client = AndroidHttpClient.newInstance("ikabi",getApplicationContext());
             HttpParams params = client.getParams();
-            HttpConnectionParams.setConnectionTimeout(params, 25000);//设置访问网络超时时间
-            HttpConnectionParams.setSoTimeout(params, 10000);//设置读取超时时间
+            HttpConnectionParams.setConnectionTimeout(params, 5000);//设置访问网络超时时间
+            HttpConnectionParams.setSoTimeout(params, 5000);//设置读取超时时间
             HttpGet get = new HttpGet(uri);
             try {
                 HttpResponse response = client.execute(get);
