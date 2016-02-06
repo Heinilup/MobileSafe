@@ -99,7 +99,7 @@ public class WelcomeActivity extends Activity {
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, 1200);
 
 
     }
@@ -114,10 +114,11 @@ public class WelcomeActivity extends Activity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
+                showProgressDialog();
                 //下载最新版本
             }
         });
-        builder.setPositiveButton("稍后再说", new OnClickListener() {
+        builder.setNegativeButton("稍后再说", new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
@@ -128,6 +129,11 @@ public class WelcomeActivity extends Activity {
         builder.show();
 
     }
+
+    private void showProgressDialog() {
+
+    }
+
     private void checkVersionUpdate() {
         new Thread(new CheckVersionTask()).start();
     }
