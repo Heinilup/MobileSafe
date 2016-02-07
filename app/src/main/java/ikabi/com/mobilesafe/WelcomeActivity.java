@@ -146,8 +146,8 @@ public class WelcomeActivity extends Activity {
 
             AndroidHttpClient client = AndroidHttpClient.newInstance("ikabi",getApplicationContext());
             HttpParams params = client.getParams();
-            HttpConnectionParams.setConnectionTimeout(params, 5000);//设置访问网络超时时间
-            HttpConnectionParams.setSoTimeout(params, 5000);//设置读取超时时间
+            HttpConnectionParams.setConnectionTimeout(params, 15000);//设置访问网络超时时间
+            HttpConnectionParams.setSoTimeout(params, 15000);//设置读取超时时间
             HttpGet get = new HttpGet(uri);
             try {
                 HttpResponse response = client.execute(get);
