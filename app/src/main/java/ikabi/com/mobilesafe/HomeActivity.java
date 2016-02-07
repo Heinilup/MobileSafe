@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.SettingActivity;
 import ikabi.com.mobilesafe.bean.HomeItem;
 
@@ -58,6 +59,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
         //设置gridview的adapter
         mGridView.setAdapter(new HomeAdatper());
+        mGridView.setOnItemClickListener(this);
     }
 
     public void clickSetting(View view){
@@ -65,8 +67,49 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         startActivity(intent);
     }
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position){
+            case 0:
+                //手机防盗
+                break;
+            case 1:
+                //骚扰拦截
+                break;
+            case 2:
+                //软件管理
+                break;
+            case 3:
+                //进程管理
+                break;
+            case 4:
+                //流量统计
+                break;
+            case 5:
+                //手机杀毒
+                break;
+            case 6:
+                //常用工具
+                break;
+            case 7:
+                //常用工具
+                break;
+            case 8:
+                //文件管理器
+                performFileManager();
+                break;
+            case 9:
+                //媒体播放器
+                break;
+            default:
+                break;
 
+        }
+
+    }
+
+    private void performFileManager() {
+        Intent intent = new Intent(this, FileManagerActivity.class);
+        startActivity(intent);
     }
 
     private class HomeAdatper extends BaseAdapter {
