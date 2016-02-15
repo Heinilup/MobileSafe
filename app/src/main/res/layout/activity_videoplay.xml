@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <ikabi.com.mobilesafe.view.VideoView
+    android:id="@+id/videoview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    />
+<!-- 修改VideoView为自定义VideoView
+   <VideoView
+    android:id="@+id/videoview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    />-->
+    <LinearLayout
+        android:id="@+id/ll_control_play"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/viedoplay_control"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/black"
+                android:orientation="vertical">
+    <ImageView
+        android:src="@drawable/play_item"
+        android:id="@+id/videolist_iv_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/videolist_iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="视频名称"
+        android:textSize="14sp"
+        android:textColor="@color/white"/>
+    <TextView
+        android:id="@+id/tv_duration"
+        android:text="视频的时长"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/videolist_iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/tv_size"
+        android:layout_marginRight="5dp"
+        android:textSize="14sp"
+        android:text="视频大小"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_alignParentBottom="true"
+        android:background="#66ffffff"
+        android:layout_width="fill_parent"
+        android:layout_height="0.1dp"/>
+
+</RelativeLayout>

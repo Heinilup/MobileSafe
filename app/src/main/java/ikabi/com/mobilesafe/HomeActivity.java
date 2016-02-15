@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ikabi.com.mobilesafe.activity.FileManagerActivity;
+import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
 import ikabi.com.mobilesafe.activity.SettingActivity;
 import ikabi.com.mobilesafe.bean.HomeItem;
 
@@ -99,6 +100,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
             case 9:
                 //媒体播放器
+                performMediaPlayer();
                 break;
             default:
                 break;
@@ -110,6 +112,12 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     private void performFileManager() {
         Intent intent = new Intent(this, FileManagerActivity.class);
         startActivity(intent);
+    }
+
+    private void performMediaPlayer() {
+        Intent intent = new Intent(this, MediaPlayerActivity.class);
+        startActivity(intent);
+
     }
 
     private class HomeAdatper extends BaseAdapter {

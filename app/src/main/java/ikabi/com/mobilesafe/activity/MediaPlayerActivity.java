@@ -1,7 +1,7 @@
 package ikabi.com.mobilesafe.activity;
 
-import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,19 +10,27 @@ import android.provider.MediaStore;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import ikabi.com.mobilesafe.R;
+import ikabi.com.mobilesafe.utils.TimeFomatUtils;
 import ikabi.com.mobilesafe.utils.VideoItem;
 
 /**
  * Created by Administrator on 2016/2/9 0009.
  */
-public class MediaPlayerActivity extends Activity {
+public class MediaPlayerActivity extends BaseActivity {
 
+    private TimeFomatUtils utils;
+
+    private ListView lv_videolist;
+    private TextView lv_novideo;
     private ArrayList<VideoItem> videoItems;
     private Handler handler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -39,9 +47,38 @@ public class MediaPlayerActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mediaplayer);
+        setContentView(R.layout.activity_mediaplay);
+        lv_videolist = (ListView) findViewById(R.id.lv_videolist);
+        lv_novideo = (TextView) findViewById(R.id.lv_novideo);
+        utils = new TimeFomatUtils();
+        lv_videolist.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+/*			//æ ¹æ®ç‚¹å‡»ä½ç½®positionå–å‡ºå¯¹åº”è§†é¢‘ä¿¡æ¯
+			VideoItem videoItem = videoItems.get(position);
+			Intent intent= new Intent(VideoLisActivity.this, VideoPlayerActivity.class);
+			intent.setData(Uri.parse(videoItem.getData()));
+				startActivity(intent);*/
+
+                //åœ¨Androidæ•°æ®çš„ä¼ é€’ä¸€èˆ¬ç”¨æ„å›¾ï¼Œå‘é€å’Œæ¥æ”¶
+
+                //ä¼ å…¥æ’­æ”¾åˆ—è¡¨å’Œå½“å‰ç‚¹å‡»ä½ç½®
+                Intent intent= new Intent(MediaPlayerActivity.this, VideoPlayActivity.class);
+                Bundle extras = new Bundle();
+                //è§†é¢‘åˆ—è¡¨
+                extras.putSerializable("videolist",videoItems);
+                intent.putExtras(extras);
+                //åœ¨è§†é¢‘åˆ—è¡¨ä¸­ç‚¹å‡»çš„æŸä¸ªä½ç½®
+                intent.putExtra("position",position);
+                startActivity(intent);
+            }
+
+        });
         getAllVideo();
     }
+
 
     private class VideoListAdapter extends BaseAdapter {
 
@@ -58,16 +95,15 @@ public class MediaPlayerActivity extends Activity {
                 view = convertView;
                 holder = (ViewHolder) view.getTag();
             } else {
-                view = View.inflate(MediaPlayerActivity.this, R.layout.activity_welcome, null);
+                view = View.inflate(MediaPlayerActivity.this, R.layout.activity_videolist_item, null);
                 holder = new ViewHolder();
-                holder.vi_name = (TextView) view.findViewById(R.id.vi_name);
-                holder.vi_duration = (TextView) view.findViewById(R.id.vi_duration);
-                holder.vi_size = (TextView) view.findViewById(R.id.vi_size);
-                //¶ÔÏó¹ØÏµ
+                holder.vi_name = (TextView) view.findViewById(R.id.tv_name);
+                holder.vi_duration = (TextView) view.findViewById(R.id.tv_duration);
+                holder.vi_size = (TextView) view.findViewById(R.id.tv_size);
+
                 view.setTag(holder);
 
             }
-            //¸ù¾İÎ»ÖÃ£¬µÃµ½¾ßÌåÄ³Ò»¸öÊÓÆµµÄĞÅÏ¢
             VideoItem videoItem = videoItems.get(position);
             holder.vi_name.setText(videoItem.getTitle());
             holder.vi_duration.setText(utils.stringForTime(Integer.valueOf(videoItem.getDuration())));
@@ -96,13 +132,12 @@ public class MediaPlayerActivity extends Activity {
     }
 
     /**
-     * ÔÚ×ÓÏß³Ì¼ÓÔØÊÓÆµ
+     * åœ¨å­çº¿ç¨‹åŠ è½½è§†é¢‘
      */
 
     private void getAllVideo() {
         new Thread() {
             public void run() {
-                //°Ñ×ÓÏß³ÌÊÓÆµ¶ÁÈ¡³öÀ´
                 videoItems = new ArrayList<VideoItem>();
                 ContentResolver resolver = getContentResolver();
                 Uri uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
@@ -116,7 +151,7 @@ public class MediaPlayerActivity extends Activity {
                 Cursor cursor = resolver.query(uri, projection, null, null, null);
                 while (cursor.moveToNext()) {
                     long size = cursor.getLong(2);
-                    //¾ßÌåÊÓÆµĞÅÏ¢
+
                     if (size > 3 * 1024 * 1024) {
                         VideoItem item = new VideoItem();
 
@@ -139,5 +174,18 @@ public class MediaPlayerActivity extends Activity {
             }
         }.start();
 
+    }
+
+    @Override
+    public View setContentView() {
+        return View.inflate(this, R.layout.activity_mediaplay, null);
+    }
+    @Override
+    public void rightButtonClick(){
+        Toast.makeText(this, "å³è¾¹ç‚¹å‡»æŒ‰é”®æˆåŠŸ", Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void leftButtonClick(){
+        finish();
     }
 }
