@@ -560,7 +560,7 @@ public class VideoPlayActivity extends BaseActivity {
     * 初始化View
     */
 	private void initView() {
-		//setTitleBar(View.GONE);
+		setTitleBar(View.GONE);
 		videoView = (VideoView) findViewById(R.id.videoview);
 		video_title = (TextView) findViewById(R.id.video_title);
 		iv_battery = (ImageView) findViewById(R.id.iv_battery);
@@ -583,14 +583,14 @@ public class VideoPlayActivity extends BaseActivity {
 	public View setContentView() {
     return View.inflate(this, R.layout.activity_videoplay, null);
 	}
-	/*@Override
+	@Override
 	public void rightButtonClick(){
 		Toast.makeText(this, "右边点击按键成功", Toast.LENGTH_SHORT).show();
 	}
 	@Override
 	public void leftButtonClick(){
 		finish();
-	}*/
+	}
 
 	private class OnclickListener {
 	}
