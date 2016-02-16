@@ -17,6 +17,7 @@ import java.util.List;
 import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
 import ikabi.com.mobilesafe.activity.SettingActivity;
+import ikabi.com.mobilesafe.activity.SoftManagerActivity;
 import ikabi.com.mobilesafe.bean.HomeItem;
 
 /**
@@ -78,6 +79,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
             case 2:
                 //软件管理
+                performSoftManager();
                 break;
             case 3:
                 //进程管理
@@ -106,6 +108,12 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
 
         }
+
+    }
+
+    private void performSoftManager() {
+        Intent intent = new Intent(this, SoftManagerActivity.class);
+        startActivity(intent);
 
     }
 

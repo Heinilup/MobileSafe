@@ -24,6 +24,7 @@
         <activity android:name=".HomeActivity"/>
         <activity android:name=".activity.SettingActivity"/>
         <activity android:name=".activity.FileManagerActivity"/>
+        <activity android:name=".activity.SoftManagerActivity"/>
         <activity android:name=".activity.MediaPlayerActivity"
             android:theme="@style/AppBaseTheme"/>
         <activity android:name=".activity.VideoPlayActivity"
