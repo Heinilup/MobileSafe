@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp" >
+
+    <ImageView
+        android:id="@+id/item_appinfo_iv_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/item_appinfo_iv_icon"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/item_appinfo_tv_name"
+            style="@style/NormalTextStyle"
+            android:singleLine="true"
+            android:text="应用程序的名称" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/item_appinfo_tv_install"
+                style="@style/NormalTextStyle"
+                android:singleLine="true"
+                android:text="安装的位置"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/item_appinfo_tv_size"
+                style="@style/NormalTextStyle"
+                android:layout_alignParentRight="true"
+                android:singleLine="true"
+                android:text="应用的大小"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
