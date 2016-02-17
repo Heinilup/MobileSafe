@@ -17,6 +17,7 @@ import java.util.List;
 
 import ikabi.com.mobilesafe.R;
 import ikabi.com.mobilesafe.bean.AppInfo;
+import ikabi.com.mobilesafe.provider.AppInfoProvider;
 import ikabi.com.mobilesafe.view.ProgressDesView;
 
 /**
@@ -67,6 +68,11 @@ public class SoftManagerActivity extends Activity {
         long sdUsedSpace = sdTotalSpace - sdFreeSpace;
         int sdProgress = (int) (sdUsedSpace * 100f / sdTotalSpace +0.5f);
         mPdvSD.setDesProgress(sdProgress);
+
+        // 3. loading data
+        mDatas = AppInfoProvider.getAllApps(getApplicationContext());
+
+        // 4. set listview data
 
         mListView.setAdapter(new AppAdapter());
 
@@ -126,10 +132,10 @@ public class SoftManagerActivity extends Activity {
                 holder = (ViewHolder) view.getTag();
             }
             AppInfo info = mDatas.get(position);
-            /*holder.ivIcon.setImageResource();
-            holder.tvName.setText();
-            holder.tvSize.setText();
-            holder.tvInstallPath.setTag();*/
+            //holder.ivIcon.setImageResource();
+            holder.tvName.setText(info.name);
+            holder.tvSize.setText(Formatter.formatFileSize(getApplicationContext(), info.size));
+            holder.tvInstallPath.setTag(info.isInstallSD ? "SD卡安装" : "手机内存");
             return view;
         }
 
