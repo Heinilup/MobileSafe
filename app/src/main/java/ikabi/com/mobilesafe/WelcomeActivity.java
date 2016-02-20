@@ -12,6 +12,7 @@ import android.os.Message;
 import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
@@ -178,11 +179,32 @@ public class WelcomeActivity extends Activity {
                         LogUtils.d(TAG,"不需要更新");
                         enterhomepage();
                 }
+                } else {
+                    Message msg = Message.obtain();
+                    msg.what = SHOW_ERROR;
+                    msg.obj = "code:130";
+                    mHandler.sendMessage(msg);
                 }
+            } catch (ClientProtocolException e) {
+
+                Message msg = Message.obtain();
+                msg.what = SHOW_ERROR;
+                msg.obj = "code:110";
+                mHandler.sendMessage(msg);
+
             } catch (IOException e) {
-                e.printStackTrace();
+
+                Message msg = Message.obtain();
+                msg.what = SHOW_ERROR;
+                msg.obj = "code:120";
+                mHandler.sendMessage(msg);
+
             } catch (JSONException e) {
-                e.printStackTrace();
+
+                Message msg = Message.obtain();
+                msg.what = SHOW_ERROR;
+                msg.obj = "code:119";
+                mHandler.sendMessage(msg);
             } finally {
                 if (client != null){
                     client.close();

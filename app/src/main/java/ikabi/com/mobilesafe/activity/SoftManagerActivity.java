@@ -1,18 +1,20 @@
 package ikabi.com.mobilesafe.activity;
 
 import android.app.Activity;
-import android.database.DataSetObserver;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import ikabi.com.mobilesafe.R;
@@ -32,9 +34,10 @@ public class SoftManagerActivity extends Activity {
     private ProgressDesView mPdvSD;
     private ListView mListView;
 
-    private List<AppInfo> mDatas;
-    private List<AppInfo> mSystemDatas;
+    private List<AppInfo> mAppInfo;
+    private List<AppInfo> mSystemAppInfo;
     private List<AppInfo> mUserDatas;
+    private LinearLayout mLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,9 @@ public class SoftManagerActivity extends Activity {
         mPdvRom = (ProgressDesView) findViewById(R.id.am_pdv_rom);
         mPdvSD = (ProgressDesView) findViewById(R.id.am_pdv_sd);
         mListView = (ListView) findViewById(R.id.am_pdv_list);
+        mLoading = (LinearLayout) findViewById(R.id.public_loading);
+
+
 
         //set date
         File dataDirectory = Environment.getDataDirectory();
@@ -69,39 +75,69 @@ public class SoftManagerActivity extends Activity {
         int sdProgress = (int) (sdUsedSpace * 100f / sdTotalSpace +0.5f);
         mPdvSD.setDesProgress(sdProgress);
 
-        // 3. loading data
-        mDatas = AppInfoProvider.getAllApps(getApplicationContext());
+        mLoading.setVisibility(View.VISIBLE);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                // 3. loading data
+                mAppInfo = AppInfoProvider.getAllApps(getApplicationContext());
+                mSystemAppInfo = new ArrayList<AppInfo>();
+                mUserDatas = new ArrayList<AppInfo>();
 
-        // 4. set listview data
+                for (AppInfo info : mAppInfo){
+                    if (info.isSystem){
+                        //system app
+                        mSystemAppInfo.add(info);
+                    }else {
+                        mUserDatas.add(info);
+                    }
+                }
 
-        mListView.setAdapter(new AppAdapter());
+
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mLoading.setVisibility(View.GONE);
+                        // 4. set listview data
+
+                        mListView.setAdapter(new AppAdapter());
+                    }
+                });
+
+            }
+        }).start();
 
     }
 
-    private class AppAdapter implements ListAdapter {
-        @Override
-        public void registerDataSetObserver(DataSetObserver dataSetObserver) {
-
-        }
-
-        @Override
-        public void unregisterDataSetObserver(DataSetObserver dataSetObserver) {
-
-        }
+    private class AppAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
-            if (mDatas != null){
-                return mDatas.size();
+            /*if (mAppInfo != null){
+                return mAppInfo.size();
+            }*/
+            int systemCount = 0;
+            if (mSystemAppInfo != null){
+                systemCount = mSystemAppInfo.size();
             }
-            return 0;
+            int userCount = 0;
+            if (mUserDatas != null){
+                userCount = mUserDatas.size();
+            }
+            return systemCount + userCount;
         }
 
         @Override
         public Object getItem(int position) {
-            if (mDatas != null){
-                return mDatas.get(position);
-            }
+            /*if (mAppInfo != null){
+                return mAppInfo.get(position);
+            }*/
             return null;
         }
 
@@ -110,20 +146,41 @@ public class SoftManagerActivity extends Activity {
             return position;
         }
 
-        @Override
-        public boolean hasStableIds() {
-            return false;
-        }
 
         @Override
         public View getView(int position, android.view.View view, ViewGroup viewGroup) {
+            int userSize = mUserDatas.size();
+            if (position == 0 ){
+                TextView tv = new TextView(getApplicationContext());
+                tv.setPadding(4,4,4,4);
+                tv.setBackgroundColor(Color.parseColor("#33000000"));
+                tv.setTextColor(Color.BLACK);
+                tv.setText("用户程序(" + userSize + ")个");
+                return tv;
+            }
+
+            int systemSize = mSystemAppInfo.size();
+            if(position == userSize +1 ){
+                TextView tv = new TextView(getApplicationContext());
+                tv.setPadding(4,4,4,4);
+                tv.setBackgroundColor(Color.parseColor("#33000000"));
+                tv.setTextColor(Color.BLACK);
+                tv.setText("系统程序(" + systemSize + ")个");
+                return tv;
+            }
             ViewHolder holder = null;
-            if (view == null){
+            if (view == null || (view instanceof TextView)){
+                
+                //1 . init view 
                 view = View.inflate(getApplicationContext(), R.layout.item_app_info, null);
 
+                //2. init holder
                 holder = new ViewHolder();
-
+             
+                //3 . setTag
                 view.setTag(holder);
+                
+                //4. init holder view
                 holder.ivIcon = (ImageView) view.findViewById(R.id.item_appinfo_iv_icon);
                 holder.tvName = (TextView) view.findViewById(R.id.item_appinfo_tv_name);
                 holder.tvInstallPath = (TextView) view.findViewById(R.id.item_appinfo_tv_install);
@@ -131,38 +188,23 @@ public class SoftManagerActivity extends Activity {
             } else {
                 holder = (ViewHolder) view.getTag();
             }
-            AppInfo info = mDatas.get(position);
-            //holder.ivIcon.setImageResource();
+
+
+            AppInfo info = null;
+
+            if (position < userSize){
+                info = mUserDatas.get(position);
+
+            } else {
+                info = mSystemAppInfo.get(position - userSize);
+            }
+            //holder.ivIcon.setImageResource(info.icon);
             holder.tvName.setText(info.name);
             holder.tvSize.setText(Formatter.formatFileSize(getApplicationContext(), info.size));
             holder.tvInstallPath.setTag(info.isInstallSD ? "SD卡安装" : "手机内存");
             return view;
         }
 
-        @Override
-        public int getItemViewType(int i) {
-            return 0;
-        }
-
-        @Override
-        public int getViewTypeCount() {
-            return 0;
-        }
-
-        @Override
-        public boolean isEmpty() {
-            return false;
-        }
-
-        @Override
-        public boolean areAllItemsEnabled() {
-            return false;
-        }
-
-        @Override
-        public boolean isEnabled(int i) {
-            return false;
-        }
     }
 
     private class ViewHolder {
