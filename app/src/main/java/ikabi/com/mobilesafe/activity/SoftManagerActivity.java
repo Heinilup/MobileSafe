@@ -51,7 +51,6 @@ public class SoftManagerActivity extends Activity {
         mLoading = (LinearLayout) findViewById(R.id.public_loading);
 
 
-
         //set date
         File dataDirectory = Environment.getDataDirectory();
         long romFreeSpace = dataDirectory.getFreeSpace();
@@ -61,8 +60,8 @@ public class SoftManagerActivity extends Activity {
         // 1.set rom date
 
         mPdvRom.setDesTitle("内存");
-        mPdvRom.setDesLeftTitle(Formatter.formatFileSize(this, romUsedSpace)+"已用");
-        mPdvRom.setDesRightTitle(Formatter.formatFileSize(this, romFreeSpace)+"可用");
+        mPdvRom.setDesLeftTitle(Formatter.formatFileSize(this, romUsedSpace) + "已用");
+        mPdvRom.setDesRightTitle(Formatter.formatFileSize(this, romFreeSpace) + "可用");
         int romProgress = (int) (romUsedSpace * 100f / romTotalSpace + 0.5f);
         mPdvRom.setDesProgress(romProgress);
 
@@ -72,7 +71,7 @@ public class SoftManagerActivity extends Activity {
         long sdFreeSpace = sdDirctory.getFreeSpace();
         long sdTotalSpace = sdDirctory.getTotalSpace();
         long sdUsedSpace = sdTotalSpace - sdFreeSpace;
-        int sdProgress = (int) (sdUsedSpace * 100f / sdTotalSpace +0.5f);
+        int sdProgress = (int) (sdUsedSpace * 100f / sdTotalSpace + 0.5f);
         mPdvSD.setDesProgress(sdProgress);
 
         mLoading.setVisibility(View.VISIBLE);
@@ -89,15 +88,14 @@ public class SoftManagerActivity extends Activity {
                 mSystemAppInfo = new ArrayList<AppInfo>();
                 mUserDatas = new ArrayList<AppInfo>();
 
-                for (AppInfo info : mAppInfo){
-                    if (info.isSystem){
+                for (AppInfo info : mAppInfo) {
+                    if (info.isSystem) {
                         //system app
                         mSystemAppInfo.add(info);
-                    }else {
+                    } else {
                         mUserDatas.add(info);
                     }
                 }
-
 
 
                 runOnUiThread(new Runnable() {
@@ -123,12 +121,14 @@ public class SoftManagerActivity extends Activity {
                 return mAppInfo.size();
             }*/
             int systemCount = 0;
-            if (mSystemAppInfo != null){
+            if (mSystemAppInfo != null) {
                 systemCount = mSystemAppInfo.size();
+                systemCount += 1;
             }
             int userCount = 0;
-            if (mUserDatas != null){
+            if (mUserDatas != null) {
                 userCount = mUserDatas.size();
+                userCount += 1;
             }
             return systemCount + userCount;
         }
@@ -150,9 +150,9 @@ public class SoftManagerActivity extends Activity {
         @Override
         public View getView(int position, android.view.View view, ViewGroup viewGroup) {
             int userSize = mUserDatas.size();
-            if (position == 0 ){
+            if (position == 0) {
                 TextView tv = new TextView(getApplicationContext());
-                tv.setPadding(4,4,4,4);
+                tv.setPadding(4, 4, 4, 4);
                 tv.setBackgroundColor(Color.parseColor("#33000000"));
                 tv.setTextColor(Color.BLACK);
                 tv.setText("用户程序(" + userSize + ")个");
@@ -160,26 +160,26 @@ public class SoftManagerActivity extends Activity {
             }
 
             int systemSize = mSystemAppInfo.size();
-            if(position == userSize +1 ){
+            if (position == userSize + 1) {
                 TextView tv = new TextView(getApplicationContext());
-                tv.setPadding(4,4,4,4);
+                tv.setPadding(4, 4, 4, 4);
                 tv.setBackgroundColor(Color.parseColor("#33000000"));
                 tv.setTextColor(Color.BLACK);
                 tv.setText("系统程序(" + systemSize + ")个");
                 return tv;
             }
             ViewHolder holder = null;
-            if (view == null || (view instanceof TextView)){
-                
+            if (view == null || (view instanceof TextView)) {
+
                 //1 . init view 
                 view = View.inflate(getApplicationContext(), R.layout.item_app_info, null);
 
                 //2. init holder
                 holder = new ViewHolder();
-             
+
                 //3 . setTag
                 view.setTag(holder);
-                
+
                 //4. init holder view
                 holder.ivIcon = (ImageView) view.findViewById(R.id.item_appinfo_iv_icon);
                 holder.tvName = (TextView) view.findViewById(R.id.item_appinfo_tv_name);
@@ -192,11 +192,11 @@ public class SoftManagerActivity extends Activity {
 
             AppInfo info = null;
 
-            if (position < userSize){
-                info = mUserDatas.get(position);
+            if (position < userSize + 1) {
+                info = mUserDatas.get(position - 1);
 
             } else {
-                info = mSystemAppInfo.get(position - userSize);
+                info = mSystemAppInfo.get(position - userSize - 2);
             }
             //holder.ivIcon.setImageResource(info.icon);
             holder.tvName.setText(info.name);

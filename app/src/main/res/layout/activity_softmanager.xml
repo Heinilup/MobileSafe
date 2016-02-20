@@ -21,7 +21,8 @@
     <ListView
         android:id="@+id/am_pdv_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:fastScrollEnabled="true"/>
         <include layout="@layout/public_loading"/>
 
     </FrameLayout>
