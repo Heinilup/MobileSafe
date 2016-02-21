@@ -24,6 +24,13 @@
         android:layout_height="match_parent"
         android:fastScrollEnabled="true"/>
         <include layout="@layout/public_loading"/>
+        <TextView
+            android:id="@+id/am_tv_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffcccccc"
+            android:text="用户程序(x个)"
+            android:textColor="#000000"/>
 
     </FrameLayout>
 </LinearLayout>

@@ -2,15 +2,19 @@ package ikabi.com.mobilesafe.activity;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import java.io.File;
@@ -38,6 +42,7 @@ public class SoftManagerActivity extends Activity {
     private List<AppInfo> mSystemAppInfo;
     private List<AppInfo> mUserDatas;
     private LinearLayout mLoading;
+    private TextView mHeaderText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,7 @@ public class SoftManagerActivity extends Activity {
         mPdvSD = (ProgressDesView) findViewById(R.id.am_pdv_sd);
         mListView = (ListView) findViewById(R.id.am_pdv_list);
         mLoading = (LinearLayout) findViewById(R.id.public_loading);
+        mHeaderText = (TextView) findViewById(R.id.am_tv_header);
 
 
         //set date
@@ -75,6 +81,7 @@ public class SoftManagerActivity extends Activity {
         mPdvSD.setDesProgress(sdProgress);
 
         mLoading.setVisibility(View.VISIBLE);
+        mHeaderText.setVisibility(View.GONE);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -102,6 +109,11 @@ public class SoftManagerActivity extends Activity {
                     @Override
                     public void run() {
                         mLoading.setVisibility(View.GONE);
+                        mHeaderText.setVisibility(View.VISIBLE);
+
+                        //set data for mHeaderText
+
+                        mHeaderText.setText("用户程序(" + mUserDatas.size() + "个)");
                         // 4. set listview data
 
                         mListView.setAdapter(new AppAdapter());
@@ -111,6 +123,71 @@ public class SoftManagerActivity extends Activity {
             }
         }).start();
 
+
+        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+
+                if (mUserDatas == null || mSystemAppInfo == null) {
+                    return;
+                }
+                int userSize = mUserDatas.size();
+                if (i >= 0 && i <= userSize) {
+                    mHeaderText.setText("用户程序(" + mUserDatas.size() + "个)");
+
+                } else if (i >= userSize + 1) {
+                    mHeaderText.setText("系统程序(" + mSystemAppInfo.size() + ")个");
+                }
+
+            }
+        });
+        // listview onitemclick listener
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                //
+                if (position == 0) {
+                    return;
+
+                }
+                int userSize = mUserDatas.size();
+                if (position == userSize + 1) {
+                    return;
+                }
+                AppInfo info = null;
+                if (position > 0 && position < userSize + 1) {
+                    //user app
+                    info = mUserDatas.get(position - 1);
+                } else {
+                    // system app
+                    info = mSystemAppInfo.get(position - userSize - 2);
+                }
+
+                // show popwindow
+                TextView contentView = new TextView(getApplicationContext());
+                contentView.setText("弹出的层");
+                contentView.setPadding(8, 8, 8, 8);
+                contentView.setBackgroundColor(Color.RED);
+                int width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                int height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                PopupWindow window = new PopupWindow(contentView, width, height);
+
+                //focus
+                window.setFocusable(true);
+
+                //click slide can touch
+                window.setOutsideTouchable(true);
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                //show
+                window.showAsDropDown(view);
+                //window.showAsDropDown(view , 100, 100);
+            }
+        });
     }
 
     private class AppAdapter extends BaseAdapter {
@@ -153,7 +230,7 @@ public class SoftManagerActivity extends Activity {
             if (position == 0) {
                 TextView tv = new TextView(getApplicationContext());
                 tv.setPadding(4, 4, 4, 4);
-                tv.setBackgroundColor(Color.parseColor("#33000000"));
+                tv.setBackgroundColor(Color.parseColor("#ffcccccc"));
                 tv.setTextColor(Color.BLACK);
                 tv.setText("用户程序(" + userSize + ")个");
                 return tv;
@@ -163,7 +240,7 @@ public class SoftManagerActivity extends Activity {
             if (position == userSize + 1) {
                 TextView tv = new TextView(getApplicationContext());
                 tv.setPadding(4, 4, 4, 4);
-                tv.setBackgroundColor(Color.parseColor("#33000000"));
+                tv.setBackgroundColor(Color.parseColor("#ffcccccc"));
                 tv.setTextColor(Color.BLACK);
                 tv.setText("系统程序(" + systemSize + ")个");
                 return tv;
