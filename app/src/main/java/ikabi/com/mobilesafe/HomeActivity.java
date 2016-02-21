@@ -16,6 +16,7 @@ import java.util.List;
 
 import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
+import ikabi.com.mobilesafe.activity.ProcessManagerActivity;
 import ikabi.com.mobilesafe.activity.SettingActivity;
 import ikabi.com.mobilesafe.activity.SoftManagerActivity;
 import ikabi.com.mobilesafe.bean.HomeItem;
@@ -83,6 +84,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
             case 3:
                 //进程管理
+                performProcessManager();
                 break;
             case 4:
                 //流量统计
@@ -109,6 +111,11 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
         }
 
+    }
+
+    private void performProcessManager() {
+        Intent intent = new Intent(this, ProcessManagerActivity.class);
+        startActivity(intent);
     }
 
     private void performSoftManager() {

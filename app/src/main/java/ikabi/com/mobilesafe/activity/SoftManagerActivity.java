@@ -1,8 +1,14 @@
 package ikabi.com.mobilesafe.activity;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.format.Formatter;
@@ -20,6 +26,7 @@ import android.widget.TextView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import ikabi.com.mobilesafe.R;
 import ikabi.com.mobilesafe.bean.AppInfo;
@@ -43,6 +50,27 @@ public class SoftManagerActivity extends Activity {
     private List<AppInfo> mUserDatas;
     private LinearLayout mLoading;
     private TextView mHeaderText;
+    private PopupWindow mWindow;
+    private AppAdapter mAdapter;
+    private BroadcastReceiver mPackageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String dataString = intent.getDataString();
+            String packageName = dataString.replace("package", "");
+
+            // UI update
+            ListIterator<AppInfo> iterator = mUserDatas.listIterator();
+            while (iterator.hasNext()){
+                AppInfo next = iterator.next();
+                if (next.packageName.equals(packageName)){
+                    iterator.remove();
+                    break;
+                }
+            }
+
+            mAdapter.notifyDataSetChanged();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +83,13 @@ public class SoftManagerActivity extends Activity {
         mListView = (ListView) findViewById(R.id.am_pdv_list);
         mLoading = (LinearLayout) findViewById(R.id.public_loading);
         mHeaderText = (TextView) findViewById(R.id.am_tv_header);
+
+        // register package install and uninstall
+        IntentFilter filter = new IntentFilter();
+        filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+        filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
+        filter.addDataScheme("package");
+        registerReceiver(mPackageReceiver, filter);
 
 
         //set date
@@ -116,7 +151,8 @@ public class SoftManagerActivity extends Activity {
                         mHeaderText.setText("用户程序(" + mUserDatas.size() + "个)");
                         // 4. set listview data
 
-                        mListView.setAdapter(new AppAdapter());
+                        mAdapter = new AppAdapter();
+                        mListView.setAdapter(mAdapter);
                     }
                 });
 
@@ -148,6 +184,8 @@ public class SoftManagerActivity extends Activity {
         });
         // listview onitemclick listener
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            private View mContentView;
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 //
@@ -173,22 +211,79 @@ public class SoftManagerActivity extends Activity {
                 contentView.setText("弹出的层");
                 contentView.setPadding(8, 8, 8, 8);
                 contentView.setBackgroundColor(Color.RED);*/
-                View contentView = View.inflate(getApplicationContext(),R.layout.popwindow_app, null);
+                mContentView = View.inflate(getApplicationContext(),R.layout.popwindow_app, null);
+
+                final AppInfo app = info;
+                mContentView.findViewById(R.id.pop_ll_uninstall).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //uninstall
+
+                        Intent intent = new Intent();
+                        intent.setAction("android.intent.action.DELETE");
+                        intent.addCategory("android.intent.category.DEFAULT");
+                        intent.setData(Uri.parse("package:" + app.packageName));
+                        startActivity(intent);
+
+                        // dismiss popwindow
+                        mWindow.dismiss();
+                    }
+                });
+                mContentView.findViewById(R.id.pop_ll_open).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        PackageManager pm = getPackageManager();
+                        Intent intent = pm.getLaunchIntentForPackage(app.packageName);
+                        if (intent != null){
+                            startActivity(intent);
+                        }
+                        mWindow.dismiss();
+                    }
+                });
+                mContentView.findViewById(R.id.pop_ll_share).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setType("vnd.android-dir/mms-sms");
+                        intent.putExtra("sms_body", "share");
+                        startActivity(intent);
+
+                        // dismiss popwindow
+                        mWindow.dismiss();
+
+                    }
+                });
+                mContentView.findViewById(R.id.pop_ll_info).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        //Info
+                        Intent intent = new Intent();
+                        intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+                        intent.addCategory("android.intent.category.DEFAULT");
+                        intent.setData(Uri.parse("package:" + app.packageName));
+                        startActivity(intent);
+
+                        // dismiss popwindow
+                        mWindow.dismiss();
+                    }
+                });
                 int width = ViewGroup.LayoutParams.WRAP_CONTENT;
                 int height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                PopupWindow window = new PopupWindow(contentView, width, height);
+                mWindow = new PopupWindow(mContentView, width, height);
 
                 //focus
-                window.setFocusable(true);
+                mWindow.setFocusable(true);
 
                 //click slide can touch
-                window.setOutsideTouchable(true);
-                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                mWindow.setOutsideTouchable(true);
+                mWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 //show
 
-                window.setAnimationStyle(R.style.PopAnimation);
+                mWindow.setAnimationStyle(R.style.PopAnimation);
                 //window.showAsDropDown(view);
-                window.showAsDropDown(view , 60, -view.getHeight());
+                mWindow.showAsDropDown(view , 60, -view.getHeight());
             }
         });
     }
