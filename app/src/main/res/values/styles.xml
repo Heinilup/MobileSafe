@@ -24,4 +24,8 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="PopAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/pop_enter</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit</item>
+    </style>
 </resources>

@@ -169,10 +169,11 @@ public class SoftManagerActivity extends Activity {
                 }
 
                 // show popwindow
-                TextView contentView = new TextView(getApplicationContext());
+                /*TextView contentView = new TextView(getApplicationContext());
                 contentView.setText("弹出的层");
                 contentView.setPadding(8, 8, 8, 8);
-                contentView.setBackgroundColor(Color.RED);
+                contentView.setBackgroundColor(Color.RED);*/
+                View contentView = View.inflate(getApplicationContext(),R.layout.popwindow_app, null);
                 int width = ViewGroup.LayoutParams.WRAP_CONTENT;
                 int height = ViewGroup.LayoutParams.WRAP_CONTENT;
                 PopupWindow window = new PopupWindow(contentView, width, height);
@@ -184,8 +185,10 @@ public class SoftManagerActivity extends Activity {
                 window.setOutsideTouchable(true);
                 window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 //show
-                window.showAsDropDown(view);
-                //window.showAsDropDown(view , 100, 100);
+
+                window.setAnimationStyle(R.style.PopAnimation);
+                //window.showAsDropDown(view);
+                window.showAsDropDown(view , 60, -view.getHeight());
             }
         });
     }
