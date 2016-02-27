@@ -110,13 +110,15 @@ public class SoftManagerActivity extends Activity {
 
         // 2. set sd date
         
-
         File sdDirctory = Environment.getExternalStorageDirectory();
         long sdFreeSpace = sdDirctory.getFreeSpace();
         long sdTotalSpace = sdDirctory.getTotalSpace();
         long sdUsedSpace = sdTotalSpace - sdFreeSpace;
         int sdProgress = (int) (sdUsedSpace * 100f / sdTotalSpace + 0.5f);
-        mPdvSD.setDesProgress(sdProgress);
+        mPdvSD.setDesTitle("SD卡");
+        mPdvSD.setDesLeftTitle(Formatter.formatFileSize(this, romUsedSpace) + "已用");
+        mPdvSD.setDesRightTitle(Formatter.formatFileSize(this, romFreeSpace) + "可用");
+        mPdvRom.setDesProgress(sdProgress);
 
         mLoading.setVisibility(View.VISIBLE);
         mHeaderText.setVisibility(View.GONE);
