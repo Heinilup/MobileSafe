@@ -18,6 +18,7 @@ import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
 import ikabi.com.mobilesafe.activity.ProcessManagerActivity;
 import ikabi.com.mobilesafe.activity.SettingActivity;
+import ikabi.com.mobilesafe.activity.SmartHomeActivity;
 import ikabi.com.mobilesafe.activity.SoftManagerActivity;
 import ikabi.com.mobilesafe.bean.HomeItem;
 
@@ -30,13 +31,13 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     private static final String TAG = "HomeActivity";
 
     private final static String[] TITLES = new String[] { "手机防盗", "骚扰拦截",
-            "软件管家", "进程管理", "流量统计", "手机杀毒", "缓存清理", "常用工具", "文件管理", "媒体播放" };
+            "软件管家", "进程管理", "流量统计", "手机杀毒", "缓存清理", "常用工具", "文件管理", "媒体播放", "智能家居", "应用市场" };
     private final static String[] DESCS = new String[] { "远程定位手机", "全面拦截骚扰",
-            "管理您的软件", "管理运行进程", "流量一目了然", "病毒无处藏身", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器" };
+            "管理您的软件", "管理运行进程", "流量一目了然", "病毒无处藏身", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器", "物联网", "应用下载安装" };
 
     private final static int[] ICONS = new int[] { R.drawable.sjfd,
             R.drawable.srlj, R.drawable.rjgj, R.drawable.jcgl, R.drawable.lltj,
-            R.drawable.sjsd, R.drawable.hcql, R.drawable.cygj, R.drawable.hcql, R.drawable.cygj };
+            R.drawable.sjsd, R.drawable.hcql, R.drawable.cygj, R.drawable.lltj, R.drawable.sjsd, R.drawable.rjgj, R.drawable.jcgl };
     private GridView mGridView;
     private List<HomeItem> mDates;
 
@@ -106,11 +107,23 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 //媒体播放器
                 performMediaPlayer();
                 break;
+            case 10:
+                //智能家居
+                performSmartHome();
+                break;
+            case 11:
+                //应用市场
+                break;
             default:
                 break;
 
         }
 
+    }
+
+    private void performSmartHome() {
+        Intent intent = new Intent(this, SmartHomeActivity.class);
+        startActivity(intent);
     }
 
     private void performProcessManager() {

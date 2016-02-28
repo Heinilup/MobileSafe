@@ -27,6 +27,7 @@
         <activity android:name=".activity.FileManagerActivity"/>
         <activity android:name=".activity.SoftManagerActivity"/>
         <activity android:name=".activity.ProcessManagerActivity"/>
+        <activity android:name=".activity.SmartHomeActivity"/>
         <activity
             android:name=".activity.MediaPlayerActivity"
             android:theme="@style/AppBaseTheme"/>
