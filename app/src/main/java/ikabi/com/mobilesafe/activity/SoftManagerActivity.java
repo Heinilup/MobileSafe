@@ -23,6 +23,8 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.socks.library.KLog;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +33,6 @@ import java.util.ListIterator;
 import ikabi.com.mobilesafe.R;
 import ikabi.com.mobilesafe.bean.AppInfo;
 import ikabi.com.mobilesafe.provider.AppInfoProvider;
-import ikabi.com.mobilesafe.utils.LogUtils;
 import ikabi.com.mobilesafe.view.ProgressDesView;
 
 /**
@@ -70,7 +71,7 @@ public class SoftManagerActivity extends Activity {
             }
 
             mAdapter.notifyDataSetChanged();
-            LogUtils.d(TAG,"mAdapter.notifyDataSetChanged()" + iterator);
+            KLog.d();
         }
     };
 
@@ -109,7 +110,7 @@ public class SoftManagerActivity extends Activity {
         mPdvRom.setDesProgress(romProgress);
 
         // 2. set sd date
-        
+
         File sdDirctory = Environment.getExternalStorageDirectory();
         long sdFreeSpace = sdDirctory.getFreeSpace();
         long sdTotalSpace = sdDirctory.getTotalSpace();
