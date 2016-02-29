@@ -3,9 +3,21 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         style="@style/TitleBarStyle"
         android:text="进程管理"/>
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:onClick="clickClean"
+            android:scaleType="center"
+            android:src="@drawable/btn_clean_selector"/>
+
+    </RelativeLayout>
    <ikabi.com.mobilesafe.view.ProgressDesView
        android:id="@+id/pm_pdv_process"
        android:layout_width="match_parent"
