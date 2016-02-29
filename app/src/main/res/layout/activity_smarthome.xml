@@ -3,6 +3,9 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <TextView
+        style="@style/TitleBarStyle"
+        android:text="智能家居"/>
 
     <Button
         android:onClick="open"

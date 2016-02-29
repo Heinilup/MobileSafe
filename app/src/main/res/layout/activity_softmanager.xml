@@ -4,8 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TitleBarStyle"
         android:text="软件管理"/>
     <ikabi.com.mobilesafe.view.ProgressDesView
         android:id="@+id/am_pdv_rom"
