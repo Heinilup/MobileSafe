@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ikabi.com.mobilesafe.activity.FileExplorerActivity;
 import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
 import ikabi.com.mobilesafe.activity.ProcessManagerActivity;
@@ -98,6 +99,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
             case 7:
                 //常用工具
+                performFileExplorer();
                 break;
             case 8:
                 //文件管理器
@@ -119,6 +121,11 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
         }
 
+    }
+
+    private void performFileExplorer() {
+        Intent intent = new Intent(this, FileExplorerActivity.class);
+        startActivity(intent);
     }
 
     private void performSmartHome() {
