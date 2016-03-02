@@ -143,7 +143,7 @@ public class WelcomeActivity extends Activity {
         @Override
         public void run() {
             //implements for checkversion
-            String uri = "http://869.8866.org/update.txt";
+            String uri = "http://blog.ikabi.com/update.txt";
 
             AndroidHttpClient client = AndroidHttpClient.newInstance("ikabi",getApplicationContext());
             HttpParams params = client.getParams();
