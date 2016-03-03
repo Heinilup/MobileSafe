@@ -18,8 +18,8 @@ import ikabi.com.mobilesafe.R;
  * @ Data:16/2/28
  */
 public class SmartHomeActivity extends Activity {
-    private final String IP = "192.168.1.100";
-    private final int PORT = 6722;
+    private final String IP = "blog.ikabi.com";
+    private final int PORT = 50435;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
