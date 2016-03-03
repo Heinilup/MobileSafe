@@ -36,6 +36,15 @@ public class SmartHomeActivity extends Activity {
         sendMsg("21");
 
     }
+    public void open1(View view) {
+        sendMsg("12");
+
+    }
+
+    public void close1(View view) {
+        sendMsg("22");
+
+    }
 
     public void sendMsg(final String msg) {
         new Thread() {

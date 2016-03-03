@@ -6,17 +6,48 @@
     <TextView
         style="@style/TitleBarStyle"
         android:text="智能家居"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="依轩卧室灯"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"/>
 
     <Button
         android:onClick="open"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Open"
-        android:id="@+id/btn_open"/>
+        android:id="@+id/btn_open1"/>
     <Button
         android:onClick="close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Close"
-        android:id="@+id/btn_close"/>
+        android:id="@+id/btn_close1"/></LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="老婆厕所灯"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"/>
+
+        <Button
+            android:onClick="open1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open"
+            android:id="@+id/btn_open"/>
+        <Button
+            android:onClick="close1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Close"
+            android:id="@+id/btn_close"/></LinearLayout>
 </LinearLayout>

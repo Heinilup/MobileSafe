@@ -9,6 +9,7 @@ import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MotionEvent;
 import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
@@ -104,6 +105,7 @@ public class WelcomeActivity extends Activity {
 
 
     }
+
     private void showUpdateDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LogUtils.d(TAG, "showUpdateDialog");
@@ -143,12 +145,12 @@ public class WelcomeActivity extends Activity {
         @Override
         public void run() {
             //implements for checkversion
-            String uri = "http://869.8866.org/update.txt";
+            String uri = "http://blog.ikabi.com/update.txt";
 
             AndroidHttpClient client = AndroidHttpClient.newInstance("ikabi",getApplicationContext());
             HttpParams params = client.getParams();
-            HttpConnectionParams.setConnectionTimeout(params, 15000);//设置访问网络超时时间
-            HttpConnectionParams.setSoTimeout(params, 15000);//设置读取超时时间
+            HttpConnectionParams.setConnectionTimeout(params, 5000);//设置访问网络超时时间
+            HttpConnectionParams.setSoTimeout(params, 5000);//设置读取超时时间
             HttpGet get = new HttpGet(uri);
             try {
                 HttpResponse response = client.execute(get);
@@ -212,5 +214,11 @@ public class WelcomeActivity extends Activity {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        enterhomepage();
+        return super.onTouchEvent(event);
     }
 }
