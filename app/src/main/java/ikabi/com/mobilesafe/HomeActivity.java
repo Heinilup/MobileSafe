@@ -14,11 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-import ikabi.com.mobilesafe.activity.FileExplorerActivity;
-=======
 import ikabi.com.mobilesafe.activity.DragActivity;
->>>>>>> home
 import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
 import ikabi.com.mobilesafe.activity.ProcessManagerActivity;
@@ -105,11 +101,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
             case 7:
                 //常用工具
-<<<<<<< HEAD
-                performFileExplorer();
-=======
                 performNavigation();
->>>>>>> home
                 break;
             case 8:
                 //文件管理器
@@ -133,10 +125,6 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
     }
 
-<<<<<<< HEAD
-    private void performFileExplorer() {
-        Intent intent = new Intent(this, FileExplorerActivity.class);
-=======
     private void performSlidingMenu() {
         Intent intent = new Intent(this, SlidingMenu.class);
         startActivity(intent);
@@ -144,7 +132,6 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
     private void performNavigation() {
         Intent intent = new Intent(this, DragActivity.class);
->>>>>>> home
         startActivity(intent);
     }
 
