@@ -28,7 +28,11 @@
         <activity android:name=".activity.SoftManagerActivity"/>
         <activity android:name=".activity.ProcessManagerActivity"/>
         <activity android:name=".activity.SmartHomeActivity"/>
+<<<<<<< HEAD
         <activity android:name=".activity.FileExplorerActivity"/>
+=======
+        <activity android:name=".activity.DragActivity"/>
+>>>>>>> home
         <activity
             android:name=".activity.MediaPlayerActivity"
             android:theme="@style/AppBaseTheme"/>

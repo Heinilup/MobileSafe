@@ -14,11 +14,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import ikabi.com.mobilesafe.activity.FileExplorerActivity;
+=======
+import ikabi.com.mobilesafe.activity.DragActivity;
+>>>>>>> home
 import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
 import ikabi.com.mobilesafe.activity.ProcessManagerActivity;
 import ikabi.com.mobilesafe.activity.SettingActivity;
+import ikabi.com.mobilesafe.activity.SlidingMenu;
 import ikabi.com.mobilesafe.activity.SmartHomeActivity;
 import ikabi.com.mobilesafe.activity.SoftManagerActivity;
 import ikabi.com.mobilesafe.bean.HomeItem;
@@ -96,10 +101,15 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
             case 6:
                 //常用工具
+                performSlidingMenu();
                 break;
             case 7:
                 //常用工具
+<<<<<<< HEAD
                 performFileExplorer();
+=======
+                performNavigation();
+>>>>>>> home
                 break;
             case 8:
                 //文件管理器
@@ -123,8 +133,18 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
     }
 
+<<<<<<< HEAD
     private void performFileExplorer() {
         Intent intent = new Intent(this, FileExplorerActivity.class);
+=======
+    private void performSlidingMenu() {
+        Intent intent = new Intent(this, SlidingMenu.class);
+        startActivity(intent);
+    }
+
+    private void performNavigation() {
+        Intent intent = new Intent(this, DragActivity.class);
+>>>>>>> home
         startActivity(intent);
     }
 
