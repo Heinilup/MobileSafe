@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        style="@style/TitleBarStyle"
+        android:text="QQ效果"/>
+
+
+    <ikabi.com.mobilesafe.view.DragLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view">
+        <TextView
+            android:layout_width="@dimen/width_drag"
+            android:layout_height="@dimen/height_drag"
+            android:background="#ff0000"/>
+        <TextView
+            android:layout_width="@dimen/width_drag"
+            android:layout_height="@dimen/height_drag"
+            android:background="@color/black"/>
+    </ikabi.com.mobilesafe.view.DragLayout>
+</LinearLayout>
