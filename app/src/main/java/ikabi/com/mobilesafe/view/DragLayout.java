@@ -1,11 +1,14 @@
 package ikabi.com.mobilesafe.view;
 
 import android.content.Context;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import ikabi.com.mobilesafe.utils.LogUtils;
 
 /**
  * @ Author: Shuangjun Zou (Rob)
@@ -16,6 +19,7 @@ public class DragLayout extends FrameLayout {
     private View redView;
     private View blackView;
     private ViewDragHelper mViewDragHelper;
+    //private Scroller mScroller;
 
     public DragLayout(Context context) {
         super(context);
@@ -34,6 +38,7 @@ public class DragLayout extends FrameLayout {
 
     private void init() {
         mViewDragHelper = ViewDragHelper.create(this, mCallback);
+        //mScroller = new Scroller(getContext());
 
     }
 
@@ -163,12 +168,47 @@ public class DragLayout extends FrameLayout {
                 //redView移动的时候让blackView跟随移动
                 blackView.layout(blackView.getLeft() + dx, blackView.getTop() + dy , blackView.getRight() + dx , blackView.getBottom() + dy);
             }
+            //1.计算移动view百分比
+            float fraction = changedView.getLeft() * 1f/ (getMeasuredWidth() - changedView.getMeasuredWidth());
+            LogUtils.d("ZSJ", "百分比:" + fraction);
         }
 
+        /**
+         * @param releasedChild 当前抬起的view
+         * @param xvel x方向的移动速度 正:向右移动; 负: 向左移动
+         * @param yvel y方向的移动速度 正:向上移动; 负: 向下移动
+         */
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             super.onViewReleased(releasedChild, xvel, yvel);
+            int centerLeft = getMeasuredWidth()/2 - releasedChild.getMeasuredWidth()/2;
+            if (releasedChild.getLeft() < centerLeft){
+                //在左半边,
+                mViewDragHelper.smoothSlideViewTo(releasedChild, 0, releasedChild.getTop());
+                ViewCompat.postInvalidateOnAnimation(DragLayout.this);
+                //mScroller.startScroll();
+                //invalidate();
+            }else {
+                //在右半边
+                mViewDragHelper.smoothSlideViewTo(releasedChild, getMeasuredWidth() - releasedChild.getMeasuredWidth(), releasedChild.getTop());
+                ViewCompat.postInvalidateOnAnimation(DragLayout.this);
+
+            }
         }
     };
+    private void executeAnim (float fraction){
+        //ViewHelper.set
 
+    }
+
+    @Override
+    public void computeScroll() {
+        /*if (mScroller.computeScrollOffset()){
+            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            invalidate();
+        }*/
+        if (mViewDragHelper.continueSettling(true)){
+            ViewCompat.postInvalidateOnAnimation(DragLayout.this);
+        }
+    }
 }

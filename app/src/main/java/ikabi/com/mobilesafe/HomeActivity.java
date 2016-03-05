@@ -19,6 +19,7 @@ import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
 import ikabi.com.mobilesafe.activity.ProcessManagerActivity;
 import ikabi.com.mobilesafe.activity.SettingActivity;
+import ikabi.com.mobilesafe.activity.SlidingMenu;
 import ikabi.com.mobilesafe.activity.SmartHomeActivity;
 import ikabi.com.mobilesafe.activity.SoftManagerActivity;
 import ikabi.com.mobilesafe.bean.HomeItem;
@@ -96,6 +97,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
             case 6:
                 //常用工具
+                performSlidingMenu();
                 break;
             case 7:
                 //常用工具
@@ -121,6 +123,11 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
         }
 
+    }
+
+    private void performSlidingMenu() {
+        Intent intent = new Intent(this, SlidingMenu.class);
+        startActivity(intent);
     }
 
     private void performNavigation() {
