@@ -1,12 +1,20 @@
 package ikabi.com.mobilesafe.activity;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import com.nineoldandroids.animation.FloatEvaluator;
+import com.nineoldandroids.animation.IntEvaluator;
+import com.nineoldandroids.view.ViewHelper;
+
+import ikabi.com.mobilesafe.utils.ColorUtil;
 
 /**
  * @ Author: Shuangjun Zou (Rob)
@@ -19,6 +27,8 @@ public class SlidingMenu extends FrameLayout {
     private ViewDragHelper mViewDragHelper;
     private int mWidth;
     private float dragRange;
+    private FloatEvaluator floatEvaluator;//float的计算器
+    private IntEvaluator intEvaluator;//int的计算器
 
     public SlidingMenu(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -37,6 +47,22 @@ public class SlidingMenu extends FrameLayout {
 
     private void init() {
         mViewDragHelper = ViewDragHelper.create(this, mCallback);
+        floatEvaluator = new FloatEvaluator();
+        intEvaluator = new IntEvaluator();
+    }
+
+    //定义状态常量
+    enum DragState{
+        Open,Close;
+    }
+    private DragState currentState = DragState.Close;//当前SlideMenu的状态默认是关闭的
+
+    /**
+     * 获取当前的状态
+     * @return
+     */
+    public DragState getCurrentState(){
+        return currentState;
     }
 
     @Override
@@ -103,6 +129,26 @@ public class SlidingMenu extends FrameLayout {
                 mainView.layout(newLeft, mainView.getTop() + dy, newLeft + mainView.getMeasuredWidth(), mainView.getBottom() + dy);
             }
 
+            //计算滑动的百分比
+            float fraction = mainView.getLeft()/dragRange;
+            executeAnim(fraction);
+            //2.执行伴随动画
+            executeAnim(fraction);
+            //3.更改状态，回调listener的方法
+            if(fraction==0 && currentState!=DragState.Close){
+                //更改状态为关闭，并回调关闭的方法
+                currentState = DragState.Close;
+                if(listener!=null)listener.onClose();
+            }else if (fraction==1f && currentState!=DragState.Open) {
+                //更改状态为打开，并回调打开的方法
+                currentState = DragState.Open;
+                if(listener!=null)listener.onOpen();
+            }
+            //将drag的fraction暴漏给外界
+            if(listener!=null){
+                listener.onDraging(fraction);
+            }
+
         }
 
         @Override
@@ -119,6 +165,43 @@ public class SlidingMenu extends FrameLayout {
 
         }
     };
+
+    public void executeAnim (float fraction){
+        //fraction:0-1
+        //缩小mainView
+//		float scaleValue = 0.8f+0.2f*(1-fraction);//1-0.8f
+        ViewHelper.setScaleX(mainView, floatEvaluator.evaluate(fraction,1f,0.8f));
+        ViewHelper.setScaleY(mainView, floatEvaluator.evaluate(fraction,1f,0.8f));
+        //移动menuView
+        ViewHelper.setTranslationX(menuView,intEvaluator.evaluate(fraction,-menuView.getMeasuredWidth()/2,0));
+        //放大menuView
+        ViewHelper.setScaleX(menuView,floatEvaluator.evaluate(fraction,0.5f,1f));
+        ViewHelper.setScaleY(menuView,floatEvaluator.evaluate(fraction,0.5f,1f));
+        //改变menuView的透明度
+        ViewHelper.setAlpha(menuView,floatEvaluator.evaluate(fraction,0.3f,1f));
+
+        //给SlideMenu的背景添加黑色的遮罩效果
+        getBackground().setColorFilter((Integer) ColorUtil.evaluateColor(fraction, Color.BLACK,Color.TRANSPARENT), PorterDuff.Mode.SRC_OVER);
+
+    }
+    private OnDragStateChangeListener listener;
+    public void setOnDragStateChangeListener(OnDragStateChangeListener listener){
+        this.listener = listener;
+    }
+    public interface OnDragStateChangeListener{
+        /**
+         * 打开的回调
+         */
+        void onOpen();
+        /**
+         * 关闭的回调
+         */
+        void onClose();
+        /**
+         * 正在拖拽中的回调
+         */
+        void onDraging(float fraction);
+    }
 
     @Override
     public void computeScroll() {
