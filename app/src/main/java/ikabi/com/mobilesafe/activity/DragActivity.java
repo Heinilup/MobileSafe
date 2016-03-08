@@ -38,7 +38,7 @@ public class DragActivity extends Activity {
             }
         });
         main_Listview = (ListView) findViewById(R.id.main_listview);
-        main_Listview.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Constant.NAMES) {
+        main_Listview.setAdapter(new ArrayAdapter<String>(this, R.layout.activity_drag_list, Constant.NAMES) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = convertView == null ? super.getView(position, convertView, parent):convertView;
@@ -49,5 +49,6 @@ public class DragActivity extends Activity {
                 return view;
             }
         });
+
     }
 }

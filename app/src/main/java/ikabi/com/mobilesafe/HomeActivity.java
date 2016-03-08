@@ -22,6 +22,7 @@ import ikabi.com.mobilesafe.activity.SettingActivity;
 import ikabi.com.mobilesafe.activity.SlidingMenu;
 import ikabi.com.mobilesafe.activity.SmartHomeActivity;
 import ikabi.com.mobilesafe.activity.SoftManagerActivity;
+import ikabi.com.mobilesafe.activity.SwipeActivity;
 import ikabi.com.mobilesafe.bean.HomeItem;
 
 /**
@@ -94,6 +95,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
             case 5:
                 //手机杀毒
+                performSwipeLayout();
                 break;
             case 6:
                 //常用工具
@@ -123,6 +125,11 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
         }
 
+    }
+
+    private void performSwipeLayout() {
+        Intent intent = new Intent(this, SwipeActivity.class);
+        startActivity(intent);
     }
 
     private void performSlidingMenu() {
