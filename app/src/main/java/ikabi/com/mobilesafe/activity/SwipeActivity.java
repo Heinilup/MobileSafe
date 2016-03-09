@@ -2,6 +2,8 @@ package ikabi.com.mobilesafe.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 
 import ikabi.com.mobilesafe.R;
 import ikabi.com.mobilesafe.activity.SwipeLayout.OnSwipeStateChangeListener;
+import ikabi.com.mobilesafe.refresh.HitBlockRefreshView;
 
 /**
  * @ Author: Shuangjun Zou (Rob)
@@ -21,6 +24,7 @@ import ikabi.com.mobilesafe.activity.SwipeLayout.OnSwipeStateChangeListener;
  * @ Data:16/3/8
  */
 public class SwipeActivity extends Activity {
+    private HitBlockRefreshView refreshView;
 
     private ListView listView;
     private ArrayList<String> list = new ArrayList<String>();
@@ -30,6 +34,7 @@ public class SwipeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipelayout);
         listView = (ListView) findViewById(R.id.swipe_listview);
+        refreshView = (HitBlockRefreshView) findViewById(R.id.refresh_hit_block);
         for (int i = 0; i < 30; i++) {
             list.add("name - " + i);
         }
@@ -47,7 +52,26 @@ public class SwipeActivity extends Activity {
 
             }
         });
+        refreshView.setOnRefreshListener(new HitBlockRefreshView.HitBlockRefreshListener() {
+            @Override
+            public void onRefreshing() {
+                try {
+                    // 模拟网络请求耗时动作
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                mHandler.sendEmptyMessage(0);
+            }
+        });
     }
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            refreshView.finishRefreshing();
+            Toast.makeText(SwipeActivity.this, "Refresh complete!", Toast.LENGTH_SHORT).show();
+        }
+    };
 
     class swipeAdapter extends BaseAdapter implements OnSwipeStateChangeListener {
         @Override
