@@ -114,6 +114,12 @@ public class SwipeActivity extends Activity {
 
         }
     }
+    public void Rename(View view){
+        Toast.makeText(this,"Click Rename",Toast.LENGTH_LONG).show();
+    }
+    public void Delete(View view){
+        Toast.makeText(this,"Click Delete",Toast.LENGTH_LONG).show();
+    }
 
     static class ViewHolder {
         TextView tv_name, tv_delete;

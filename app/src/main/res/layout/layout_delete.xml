@@ -8,14 +8,16 @@
         android:layout_height="match_parent"
         android:textSize="18sp"
         android:textColor="#ffffff"
+        android:onClick="Rename"
         android:gravity="center"
         android:background="#aa000000"
-        android:text="Call"/>
+        android:text="Rename"/>
     
     <TextView android:layout_width="100dp"
         android:layout_height="match_parent"
         android:textSize="18sp"
         android:textColor="#ffffff"
+        android:onClick="Delete"
         android:id="@+id/tv_delete"
         android:gravity="center"
         android:background="#eeff0000"

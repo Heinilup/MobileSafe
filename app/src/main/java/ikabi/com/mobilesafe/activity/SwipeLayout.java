@@ -37,7 +37,7 @@ public class SwipeLayout extends FrameLayout {
         init();
     }
     enum SwipeState{
-        Open,Close;
+        Open,Close
     }
 
     private SwipeState currentState = SwipeState.Close;//当前默认是关闭状态
