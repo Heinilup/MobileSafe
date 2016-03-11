@@ -15,4 +15,6 @@
 1.应用管理
 2.文件管理
 3.音乐播放
+4.智能家居
+5.Navigation Drawlayout
 
