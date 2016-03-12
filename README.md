@@ -12,9 +12,11 @@
 
 ### 已完成功能
 
-1.应用管理
-2.文件管理
-3.音乐播放
-4.智能家居
-5.Navigation Drawlayout
-
+1. 应用管理
+1. 文件管理
+1. 音乐播放
+1. 智能家居
+1. Navigation Drawlayout
+1. GooView
+1. 滑动删除
+1. 下拉刷新弹球
