@@ -12,6 +12,7 @@
 2. 智能短信
 3. QQ效果
 4. 新闻类
+5. Mms and Messaging 由于近期负责Android源生代码的MMS模块，将陆续整理一下MMS机制及流程。
 
 ### 已完成功能
 
