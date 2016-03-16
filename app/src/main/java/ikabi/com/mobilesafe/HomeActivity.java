@@ -40,7 +40,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
     private final static int[] ICONS = new int[] { R.drawable.sjfd,
             R.drawable.srlj, R.drawable.rjgj, R.drawable.jcgl, R.drawable.lltj,
-            R.drawable.sjsd, R.drawable.hcql, R.drawable.cygj, R.drawable.lltj, R.drawable.sjsd, R.drawable.rjgj, R.drawable.jcgl };
+            R.drawable.sjsd, R.drawable.btn_mobile_optimize, R.drawable.btn_mobile_tools, R.drawable.btn_mobile_fonts, R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall };
     private GridView mGridView;
     private List<HomeItem> mDates;
 
