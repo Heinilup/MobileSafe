@@ -38,9 +38,9 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     private final static String[] DESCS = new String[] { "远程定位手机", "全面拦截骚扰",
             "管理您的软件", "管理运行进程", "流量一目了然", "病毒无处藏身", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器", "物联网", "应用下载安装" };
 
-    private final static int[] ICONS = new int[] { R.drawable.sjfd,
-            R.drawable.srlj, R.drawable.rjgj, R.drawable.jcgl, R.drawable.lltj,
-            R.drawable.sjsd, R.drawable.btn_mobile_optimize, R.drawable.btn_mobile_tools, R.drawable.btn_mobile_fonts, R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall };
+    private final static int[] ICONS = new int[] { R.drawable.btn_mobile_light,
+            R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open, R.drawable.btn_mobile_power_sleep_open, R.drawable.btn_mobile_upgrade,
+            R.drawable.btn_mobile_more, R.drawable.btn_mobile_optimize, R.drawable.btn_mobile_tools, R.drawable.btn_mobile_fonts, R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall };
     private GridView mGridView;
     private List<HomeItem> mDates;
 
