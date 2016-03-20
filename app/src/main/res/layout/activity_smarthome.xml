@@ -50,4 +50,59 @@
             android:layout_height="wrap_content"
             android:text="Close"
             android:id="@+id/btn_close"/></LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="局域网控制开关"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="局域网床头灯"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"/>
+
+        <Button
+            android:onClick="open_local_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open"
+            android:id="@+id/btn_open_local_1"/>
+        <Button
+            android:onClick="close_local_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Close"
+            android:id="@+id/btn_close_local_1"/></LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="局域网走廊灯"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"/>
+
+        <Button
+            android:onClick="open_local_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open"
+            android:id="@+id/btn_open_local_2"/>
+        <Button
+            android:onClick="close_local_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Close"
+            android:id="@+id/btn_close_local_2"/></LinearLayout>
+
 </LinearLayout>

@@ -19,7 +19,9 @@ import ikabi.com.mobilesafe.R;
  */
 public class SmartHomeActivity extends Activity {
     private final String IP = "blog.ikabi.com";
+    private final String Local_IP = "192.168.1.100";
     private final int PORT = 50435;
+    private final int Local_PORT = 6722;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,49 @@ public class SmartHomeActivity extends Activity {
                     OutputStream out = null;
                     InputStream in = null;
                     socket = new Socket(IP, PORT);
+                    out = socket.getOutputStream();
+                    in = socket.getInputStream();
+                    out.write(msg.getBytes());
+                    out.flush();
+                    byte[] cbuf = new byte[6];
+                    in.read(cbuf);
+                    KLog.d();
+                    out.close();
+                    in.close();
+                    socket.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
+    public void open_local_1(View view) {
+        sendLocalMsg("11");
+
+    }
+
+    public void close_local_1(View view) {
+        sendLocalMsg("21");
+
+    }
+    public void open_local_2(View view) {
+        sendLocalMsg("12");
+
+    }
+
+    public void close_local_2(View view) {
+        sendLocalMsg("22");
+
+    }
+    public void sendLocalMsg(final String msg) {
+        new Thread() {
+            public void run() {
+                try {
+                    Socket socket = null;
+                    OutputStream out = null;
+                    InputStream in = null;
+                    socket = new Socket(Local_IP, Local_PORT);
                     out = socket.getOutputStream();
                     in = socket.getInputStream();
                     out.write(msg.getBytes());
