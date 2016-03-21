@@ -81,7 +81,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Close"
-            android:id="@+id/btn_close_local_1"/></LinearLayout>
+            android:id="@+id/btn_close_local_1"/>
+    <ikabi.com.mobilesafe.view.SwitchToggleView
+        android:id="@+id/stv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

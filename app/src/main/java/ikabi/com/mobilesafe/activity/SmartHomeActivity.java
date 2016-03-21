@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 import ikabi.com.mobilesafe.R;
+import ikabi.com.mobilesafe.view.SwitchToggleView;
 
 /**
  * @ Author: Shuangjun Zou (Rob)
@@ -22,11 +23,31 @@ public class SmartHomeActivity extends Activity {
     private final String Local_IP = "192.168.1.100";
     private final int PORT = 50435;
     private final int Local_PORT = 6722;
+    private SwitchToggleView mView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smarthome);
+        mView = (SwitchToggleView) findViewById(R.id.stv);
+
+        mView.setSwitchBackground(R.drawable.switch_background);
+        mView.setSwitchSlide(R.drawable.slide_button_background);
+
+        mView.setOnSwitchListener(new SwitchToggleView.OnSwitchListenr() {
+
+            @Override
+            public void onSwitchChanged(boolean isOpened) {
+
+                /*Toast.makeText(getApplicationContext(), isOpened ? "打开" : "关闭",
+                        Toast.LENGTH_SHORT).show();*/
+                if (isOpened){
+                    sendMsg("21");
+                }else {
+                    sendMsg("11");
+                }
+            }
+        });
     }
 
     public void open(View view) {
