@@ -30,17 +30,17 @@ import ikabi.com.mobilesafe.bean.HomeItem;
  * @ Email:seolop@gmail.com
  * @ Data:16/2/4
  */
-public class HomeActivity extends Activity implements AdapterView.OnItemClickListener{
+public class HomeActivity extends Activity implements AdapterView.OnItemClickListener {
     private static final String TAG = "HomeActivity";
 
-    private final static String[] TITLES = new String[] { "手机防盗", "骚扰拦截",
-            "软件管家", "进程管理", "流量统计", "SwipeLayout", "缓存清理", "常用工具", "文件管理", "媒体播放", "智能家居", "应用市场" };
-    private final static String[] DESCS = new String[] { "远程定位手机", "全面拦截骚扰",
-            "管理您的软件", "管理运行进程", "流量一目了然", "滑动删除", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器", "物联网", "应用下载安装" };
+    private final static String[] TITLES = new String[]{"手机防盗", "骚扰拦截",
+            "软件管家", "进程管理", "流量统计", "SwipeLayout", "缓存清理", "常用工具", "文件管理", "媒体播放", "智能家居", "应用市场", "一键锁屏", "智能短信"};
+    private final static String[] DESCS = new String[]{"远程定位手机", "全面拦截骚扰",
+            "管理您的软件", "管理运行进程", "流量一目了然", "滑动删除", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器", "物联网", "应用下载安装", "快捷一键锁屏", "智能手机短信"};
 
-    private final static int[] ICONS = new int[] { R.drawable.btn_mobile_light,
+    private final static int[] ICONS = new int[]{R.drawable.btn_mobile_light,
             R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open, R.drawable.btn_mobile_power_sleep_open, R.drawable.btn_mobile_upgrade,
-            R.drawable.btn_mobile_more, R.drawable.btn_mobile_optimize, R.drawable.btn_mobile_tools, R.drawable.btn_mobile_fonts, R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall };
+            R.drawable.btn_mobile_more, R.drawable.btn_mobile_optimize, R.drawable.btn_mobile_tools, R.drawable.btn_mobile_fonts, R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall, R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open};
     private GridView mGridView;
     private List<HomeItem> mDates;
 
@@ -54,7 +54,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         //初始化List数据
 
         mDates = new ArrayList<HomeItem>();
-        for (int i = 0; i < ICONS.length; i++){
+        for (int i = 0; i < ICONS.length; i++) {
             HomeItem item = new HomeItem();
             item.iconID = ICONS[i];
             item.title = TITLES[i];
@@ -69,13 +69,14 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         mGridView.setOnItemClickListener(this);
     }
 
-    public void clickSetting(View view){
+    public void clickSetting(View view) {
         Intent intent = new Intent(this, SettingActivity.class);
         startActivity(intent);
     }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (position){
+        switch (position) {
             case 0:
                 //手机防盗
                 break;
@@ -120,11 +121,23 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
             case 11:
                 //应用市场
                 break;
+            case 12:
+                //一键锁屏
+                performLockScreen();
+                break;
+            case 13:
+                //应用市场
+                break;
             default:
                 break;
 
         }
 
+    }
+
+    private void performLockScreen() {
+        Intent intent = new Intent(this, SwipeActivity.class);
+        startActivity(intent);
     }
 
     private void performSwipeLayout() {
@@ -172,7 +185,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     private class HomeAdatper extends BaseAdapter {
         @Override
         public int getCount() {
-            if(mDates != null){
+            if (mDates != null) {
                 return mDates.size();
             }
             return 0;
@@ -180,7 +193,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
         @Override
         public Object getItem(int position) {
-            if(mDates != null){
+            if (mDates != null) {
                 return mDates.get(position);
             }
             return null;
