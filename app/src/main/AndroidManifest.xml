@@ -32,6 +32,30 @@
         <activity android:name=".activity.SwipeActivity"/>
 
         <activity
+            android:name=".activity.OneKeyLockScreen"
+            android:label="@string/app_name"
+            android:icon="@drawable/lock_screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".receiver.LockScreenReceiver"
+            android:label="@string/one_key_lock_screen"
+            android:description="@string/one_key_lock_screen"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/lock"/>
+            <intent-filter>
+                <action
+                    android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
+            </intent-filter>
+        </receiver>
+        <activity
             android:name=".activity.MediaPlayerActivity"
             android:theme="@style/AppBaseTheme"/>
         <activity

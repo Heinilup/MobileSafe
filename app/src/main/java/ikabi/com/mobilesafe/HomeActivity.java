@@ -17,6 +17,7 @@ import java.util.List;
 import ikabi.com.mobilesafe.activity.DragActivity;
 import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
+import ikabi.com.mobilesafe.activity.OneKeyLockScreen;
 import ikabi.com.mobilesafe.activity.ProcessManagerActivity;
 import ikabi.com.mobilesafe.activity.SettingActivity;
 import ikabi.com.mobilesafe.activity.SlidingMenu;
@@ -136,7 +137,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     }
 
     private void performLockScreen() {
-        Intent intent = new Intent(this, SwipeActivity.class);
+        Intent intent = new Intent(this, OneKeyLockScreen.class);
         startActivity(intent);
     }
 
