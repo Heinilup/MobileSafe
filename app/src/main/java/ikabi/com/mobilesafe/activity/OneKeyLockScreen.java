@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PowerManager;
 
 import ikabi.com.mobilesafe.receiver.LockScreenReceiver;
 
@@ -26,6 +27,7 @@ public class OneKeyLockScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         // 获取设备管理服务
         policyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
         // ComponentName这个我们在用intent跳转的时候用到过。
