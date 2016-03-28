@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ikabi.com.mobilesafe.activity.BoomMenuActivity;
 import ikabi.com.mobilesafe.activity.DragActivity;
 import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
@@ -35,9 +36,9 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     private static final String TAG = "HomeActivity";
 
     private final static String[] TITLES = new String[]{"手机防盗", "骚扰拦截",
-            "软件管家", "进程管理", "流量统计", "SwipeLayout", "缓存清理", "常用工具", "文件管理", "媒体播放", "智能家居", "应用市场", "一键锁屏", "智能短信"};
+            "软件管家", "进程管理", "流量统计", "SwipeLayout", "缓存清理", "常用工具", "文件管理", "媒体播放", "智能家居", "应用市场", "一键锁屏", "BoomMenu"};
     private final static String[] DESCS = new String[]{"远程定位手机", "全面拦截骚扰",
-            "管理您的软件", "管理运行进程", "流量一目了然", "滑动删除", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器", "物联网", "应用下载安装", "快捷一键锁屏", "智能手机短信"};
+            "管理您的软件", "管理运行进程", "流量一目了然", "滑动删除", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器", "物联网", "应用下载安装", "快捷一键锁屏", "爆炸抽屉效果"};
 
     private final static int[] ICONS = new int[]{R.drawable.btn_mobile_light,
             R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open, R.drawable.btn_mobile_power_sleep_open, R.drawable.btn_mobile_upgrade,
@@ -127,13 +128,19 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 performLockScreen();
                 break;
             case 13:
-                //应用市场
+                //BoomMenu效果
+                performBoomMenu();
                 break;
             default:
                 break;
 
         }
 
+    }
+
+    private void performBoomMenu() {
+        Intent intent = new Intent(this, BoomMenuActivity.class);
+        startActivity(intent);
     }
 
     private void performLockScreen() {

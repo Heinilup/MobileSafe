@@ -5,21 +5,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.widget.TextView;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -73,13 +63,14 @@ public class WelcomeActivity extends Activity {
         mNameVersion.setText(PackageUtils.getVersionName(this));
 
         boolean update = PreferenceUtils.getBoolean(this, Constants.AUTO_UPDATE, true);
-        if(update){
+        /*if(update){
             checkVersionUpdate();
         }else {
 
         //enter to homepage
+
+        }*/
         enterhomepage();
-        }
     }
     private void close (Closeable io){
         if (io != null){
@@ -137,7 +128,7 @@ public class WelcomeActivity extends Activity {
 
     }
 
-    private void checkVersionUpdate() {
+    /*private void checkVersionUpdate() {
         new Thread(new CheckVersionTask()).start();
     }
     private class CheckVersionTask implements Runnable{
@@ -214,7 +205,7 @@ public class WelcomeActivity extends Activity {
                 }
             }
         }
-    }
+    }*/
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
