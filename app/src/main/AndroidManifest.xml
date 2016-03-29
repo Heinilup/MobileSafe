@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"/>
+        <activity android:name=".HomeActivity"
+                  android:launchMode="singleTop"/>
         <activity android:name=".activity.SettingActivity"/>
         <activity android:name=".activity.FileManagerActivity"/>
         <activity android:name=".activity.SoftManagerActivity"/>
@@ -35,7 +36,8 @@
         <activity
             android:name=".activity.OneKeyLockScreen"
             android:label="@string/app_name"
-            android:icon="@drawable/lock_screen">
+            android:icon="@drawable/lock_screen"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
