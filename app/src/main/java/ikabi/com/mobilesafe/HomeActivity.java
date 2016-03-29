@@ -2,7 +2,9 @@ package ikabi.com.mobilesafe;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -10,6 +12,12 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.Types.BoomType;
+import com.nightonke.boommenu.Types.ButtonType;
+import com.nightonke.boommenu.Types.PlaceType;
+import com.nightonke.boommenu.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +53,8 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
             R.drawable.btn_mobile_more, R.drawable.btn_mobile_optimize, R.drawable.btn_mobile_tools, R.drawable.btn_mobile_fonts, R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall, R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open};
     private GridView mGridView;
     private List<HomeItem> mDates;
+    private boolean init = false;
+    private BoomMenuButton mBoomMenuButton;
 
 
     @Override
@@ -52,6 +62,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mGridView = (GridView) findViewById(R.id.home_grid_view);
+        mBoomMenuButton = (BoomMenuButton) findViewById(R.id.boom);
 
         //初始化List数据
 
@@ -227,5 +238,45 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
             return view;
         }
+    }
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if(init) return;
+        init =true;
+        Drawable[] subButtonDrawables = new Drawable[3];
+        int[] drawablesResource = new int[]{
+                R.drawable.boom,
+                R.drawable.java,
+                R.drawable.github
+        };
+        for (int i = 0; i < 3; i++)
+            subButtonDrawables[i] = ContextCompat.getDrawable(this, drawablesResource[i]);
+
+        String[] subButtonTexts = new String[]{"BoomMenuButton", "View source code", "Follow me"};
+
+        int[][] subButtonColors = new int[3][2];
+        for (int i = 0; i < 3; i++) {
+            subButtonColors[i][1] = ContextCompat.getColor(this, R.color.material_white);
+            subButtonColors[i][0] = Util.getInstance().getPressedColor(subButtonColors[i][1]);
+        }
+
+        mBoomMenuButton.init(
+                subButtonDrawables, // The drawables of images of sub buttons. Can not be null.
+                subButtonTexts,     // The texts of sub buttons, ok to be null.
+                subButtonColors,    // The colors of sub buttons, including pressed-state and normal-state.
+                ButtonType.HAM,     // The button type.
+                BoomType.PARABOLA,  // The boom type.
+                PlaceType.HAM_3_1,  // The place type.
+                null,               // Ease type to move the sub buttons when showing.
+                null,               // Ease type to scale the sub buttons when showing.
+                null,               // Ease type to rotate the sub buttons when showing.
+                null,               // Ease type to move the sub buttons when dismissing.
+                null,               // Ease type to scale the sub buttons when dismissing.
+                null,               // Ease type to rotate the sub buttons when dismissing.
+                null                // Rotation degree.
+        );
+
+        mBoomMenuButton.setTextViewColor(ContextCompat.getColor(this, R.color.black));
     }
 }

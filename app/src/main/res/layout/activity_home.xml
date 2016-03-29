@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:id="@+id/ac_home_rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_bkg">
@@ -46,16 +48,28 @@
             android:layout_alignParentRight="true"
             android:layout_margin="4dp"
             android:onClick="clickSetting"/>
+
     </RelativeLayout>
 
     <GridView
         android:id="@+id/home_grid_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:horizontalSpacing="3dp"
         android:numColumns="2"
+        android:layout_below="@+id/ac_home_rl"
         android:verticalSpacing="3dp">
     </GridView>
+    <com.nightonke.boommenu.BoomMenuButton
+        android:id="@+id/boom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        app:boom_inActionBar="false"
 
+        />
 
-</LinearLayout>
+</RelativeLayout>
