@@ -265,9 +265,9 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 subButtonDrawables, // The drawables of images of sub buttons. Can not be null.
                 subButtonTexts,     // The texts of sub buttons, ok to be null.
                 subButtonColors,    // The colors of sub buttons, including pressed-state and normal-state.
-                ButtonType.HAM,     // The button type.
-                BoomType.PARABOLA,  // The boom type.
-                PlaceType.HAM_3_1,  // The place type.
+                ButtonType.CIRCLE,     // The button type.
+                BoomType.HORIZONTAL_THROW_2,  // The boom type.
+                PlaceType.CIRCLE_3_2,  // The place type.
                 null,               // Ease type to move the sub buttons when showing.
                 null,               // Ease type to scale the sub buttons when showing.
                 null,               // Ease type to rotate the sub buttons when showing.
