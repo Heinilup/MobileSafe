@@ -68,6 +68,15 @@ public class SmartHomeActivity extends Activity {
         sendMsg("22");
 
     }
+    public void open2(View view) {
+        sendMsg("13");
+
+    }
+
+    public void close2(View view) {
+        sendMsg("23");
+
+    }
 
     public void sendMsg(final String msg) {
         new Thread() {
@@ -110,6 +119,15 @@ public class SmartHomeActivity extends Activity {
 
     public void close_local_2(View view) {
         sendLocalMsg("22");
+
+    }
+    public void open_local_3(View view) {
+        sendLocalMsg("13");
+
+    }
+
+    public void close_local_3(View view) {
+        sendLocalMsg("23");
 
     }
     public void sendLocalMsg(final String msg) {
