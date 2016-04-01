@@ -29,4 +29,5 @@ dependencies {
     compile 'com.android.support:design:23.2.1'
     compile files('libs/nineoldandroids-2.4.0.jar')
     compile project(':boommenu')
+    compile 'com.jakewharton:butterknife:7.0.1'
 }
