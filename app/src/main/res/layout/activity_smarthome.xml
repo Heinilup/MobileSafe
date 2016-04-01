@@ -6,84 +6,7 @@
 
     <TextView
         style="@style/TitleBarStyle"
-        android:text="智能家居" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="卧室床头灯"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btn_open1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="open"
-            android:text="Open" />
-
-        <Button
-            android:id="@+id/btn_close1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="close"
-            android:text="Close" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="闺女卧室灯"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btn_open"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="open1"
-            android:text="Open" />
-
-        <Button
-            android:id="@+id/btn_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="close1"
-            android:text="Close" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="楼道灯"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btn_open2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="open2"
-            android:text="Open" />
-
-        <Button
-            android:id="@+id/btn_close2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="close2"
-            android:text="Close" />
-    </LinearLayout>
+        android:text="@string/smarthome" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -93,7 +16,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="局域网控制开关" />
+            android:text="外网控制开关"
+            android:textSize="20sp"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -104,27 +28,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="局域网床头灯"
+            android:text="@string/passage_light"
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btn_open_local_1"
+            android:id="@+id/btn_net_open1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="open_local_1"
-            android:text="Open" />
+            android:text="@string/open" />
 
         <Button
-            android:id="@+id/btn_close_local_1"
+            android:id="@+id/btn_net_close1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="close_local_1"
-            android:text="Close" />
-
-        <ikabi.com.mobilesafe.view.SwitchToggleView
-            android:id="@+id/stv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:text="@string/close" />
     </LinearLayout>
 
     <LinearLayout
@@ -135,22 +52,105 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="闺女床灯"
+            android:text="@string/kids_room_light"
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btn_open_local_2"
+            android:id="@+id/btn_net_open2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="open_local_2"
-            android:text="Open" />
+            android:text="@string/open" />
 
         <Button
-            android:id="@+id/btn_close_local_2"
+            android:id="@+id/btn_net_close2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="close_local_2"
-            android:text="Close" />
+            android:text="@string/close" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/master_room_light"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_net_open3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/open" />
+
+        <Button
+            android:id="@+id/btn_net_close3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/close" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="局域网控制开关"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/passage_light"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_local_open1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/open" />
+
+        <Button
+            android:id="@+id/btn_local_close1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/close" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/kids_room_light"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_local_open2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/open" />
+
+        <Button
+            android:id="@+id/btn_local_close2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/close" />
     </LinearLayout>
 
     <LinearLayout
@@ -159,22 +159,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="楼道灯"
+            android:text="@string/master_room_light"
             android:textSize="20sp"
             android:layout_marginTop="5dp"/>
 
         <Button
-            android:onClick="open_local_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Open"
-            android:id="@+id/btn_open_local_3"/>
+            android:text="@string/open"
+            android:id="@+id/btn_local_open3"/>
         <Button
-            android:onClick="close_local_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Close"
-            android:id="@+id/btn_close_local_3"/>
+            android:text="@string/close"
+            android:id="@+id/btn_local_close3"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ikabi.com.mobilesafe.view.SwitchToggleView
+            android:id="@+id/stv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>

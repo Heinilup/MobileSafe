@@ -27,32 +27,30 @@ public class SmartHomeActivity extends Activity {
     private final String Local_IP = "192.168.1.100";
     private final int PORT = 50435;
     private final int Local_PORT = 6722;
-    @Bind(R.id.btn_open1)
-    Button btnOpen1;
-    @Bind(R.id.btn_close1)
-    Button btnClose1;
-    @Bind(R.id.btn_open)
-    Button btnOpen;
-    @Bind(R.id.btn_close)
-    Button btnClose;
-    @Bind(R.id.btn_open2)
-    Button btnOpen2;
-    @Bind(R.id.btn_close2)
-    Button btnClose2;
-    @Bind(R.id.btn_open_local_1)
-    Button btnOpenLocal1;
-    @Bind(R.id.btn_close_local_1)
-    Button btnCloseLocal1;
-    @Bind(R.id.stv)
-    SwitchToggleView stv;
-    @Bind(R.id.btn_open_local_2)
-    Button btnOpenLocal2;
-    @Bind(R.id.btn_close_local_2)
-    Button btnCloseLocal2;
-    @Bind(R.id.btn_open_local_3)
-    Button btnOpenLocal3;
-    @Bind(R.id.btn_close_local_3)
-    Button btnCloseLocal3;
+    @Bind(R.id.btn_net_open1)
+    Button btnNetOpen1;
+    @Bind(R.id.btn_net_close1)
+    Button btnNetClose1;
+    @Bind(R.id.btn_net_open2)
+    Button btnNetOpen2;
+    @Bind(R.id.btn_net_close2)
+    Button btnNetClose2;
+    @Bind(R.id.btn_net_open3)
+    Button btnNetOpen3;
+    @Bind(R.id.btn_net_close3)
+    Button btnNetClose3;
+    @Bind(R.id.btn_local_open1)
+    Button btnLocalOpen1;
+    @Bind(R.id.btn_local_close1)
+    Button btnLocalClose1;
+    @Bind(R.id.btn_local_open2)
+    Button btnLocalOpen2;
+    @Bind(R.id.btn_local_close2)
+    Button btnLocalClose2;
+    @Bind(R.id.btn_local_open3)
+    Button btnLocalOpen3;
+    @Bind(R.id.btn_local_close3)
+    Button btnLocalClose3;
     private SwitchToggleView mView;
 
     @Override
@@ -81,35 +79,6 @@ public class SmartHomeActivity extends Activity {
         });
     }
 
-    /*public void open(View view) {
-        sendMsg("11");
-
-    }
-
-    public void close(View view) {
-        sendMsg("21");
-
-    }*/
-
-    public void open1(View view) {
-        sendMsg("12");
-
-    }
-
-    public void close1(View view) {
-        sendMsg("22");
-
-    }
-
-    public void open2(View view) {
-        sendMsg("13");
-
-    }
-
-    public void close2(View view) {
-        sendMsg("23");
-
-    }
 
     public void sendMsg(final String msg) {
         new Thread() {
@@ -134,36 +103,6 @@ public class SmartHomeActivity extends Activity {
                 }
             }
         }.start();
-    }
-
-    public void open_local_1(View view) {
-        sendLocalMsg("11");
-
-    }
-
-    public void close_local_1(View view) {
-        sendLocalMsg("21");
-
-    }
-
-    public void open_local_2(View view) {
-        sendLocalMsg("12");
-
-    }
-
-    public void close_local_2(View view) {
-        sendLocalMsg("22");
-
-    }
-
-    public void open_local_3(View view) {
-        sendLocalMsg("13");
-
-    }
-
-    public void close_local_3(View view) {
-        sendLocalMsg("23");
-
     }
 
     public void sendLocalMsg(final String msg) {
@@ -191,14 +130,44 @@ public class SmartHomeActivity extends Activity {
         }.start();
     }
 
-    @OnClick({R.id.btn_open1, R.id.btn_close1})
+    @OnClick({R.id.btn_net_open1, R.id.btn_net_close1, R.id.btn_net_open2, R.id.btn_net_close2, R.id.btn_net_open3, R.id.btn_net_close3, R.id.btn_local_open1, R.id.btn_local_close1, R.id.btn_local_open2, R.id.btn_local_close2, R.id.btn_local_open3, R.id.btn_local_close3})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_open1:
+            case R.id.btn_net_open1:
+                sendMsg("11");
+                break;
+            case R.id.btn_net_close1:
+                sendMsg("21");
+                break;
+            case R.id.btn_net_open2:
                 sendMsg("12");
                 break;
-            case R.id.btn_close1:
+            case R.id.btn_net_close2:
                 sendMsg("22");
+                break;
+            case R.id.btn_net_open3:
+                sendMsg("13");
+                break;
+            case R.id.btn_net_close3:
+                sendMsg("23");
+                break;
+            case R.id.btn_local_open1:
+                sendLocalMsg("11");
+                break;
+            case R.id.btn_local_close1:
+                sendLocalMsg("21");
+                break;
+            case R.id.btn_local_open2:
+                sendLocalMsg("12");
+                break;
+            case R.id.btn_local_close2:
+                sendLocalMsg("22");
+                break;
+            case R.id.btn_local_open3:
+                sendLocalMsg("13");
+                break;
+            case R.id.btn_local_close3:
+                sendLocalMsg("23");
                 break;
         }
     }

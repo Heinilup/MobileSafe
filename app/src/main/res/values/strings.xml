@@ -8,4 +8,10 @@
     <string name="navigation_drawer_open">Open navigation</string>
     <string name="navigation_drawer_close">Close navigation</string>
     <string name="one_key_lock_screen">锁屏</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="smarthome">智能家居</string>
+    <string name="passage_light">楼道灯</string>
+    <string name="kids_room_light">闺女卧室灯</string>
+    <string name="master_room_light">主卧室灯</string>
 </resources>
