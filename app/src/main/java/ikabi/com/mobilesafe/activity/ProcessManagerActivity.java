@@ -6,7 +6,10 @@ import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -56,8 +59,12 @@ public class ProcessManagerActivity extends Activity {
         mPdvMemory.setDesRightTitle("可用内存:" + Formatter.formatFileSize(this, freeMemory));
         mPdvMemory.setDesProgress((int) (usedMemory * 100f / totalMemory + 0.5f));
 
+        //数据加载
+
+        mDates = null;
+
         //给ListView加载数据
-        mListView.setAdapter(null);
+        mListView.setAdapter(new ProcessAdapter());
 
 
     }
@@ -86,12 +93,35 @@ public class ProcessManagerActivity extends Activity {
 
         @Override
         public View getView(int i, android.view.View view, ViewGroup viewGroup) {
-            return null;
+            ViewHolder holder = null;
+
+            if (view == null){
+                view = View.inflate(getApplicationContext(),R.layout.item_process,null);
+                holder = new ViewHolder();
+                view.setTag(holder);
+                holder.imageView = (ImageView) view.findViewById(R.id.item_process_iv);
+                holder.tvName = (TextView) view.findViewById(R.id.item_process_tv_name);
+                holder.tvMemory = (TextView) view.findViewById(R.id.item_process_tv_memory_size);
+                holder.checkBox = (CheckBox) view.findViewById(R.id.item_process_checkbox);
+
+            } else {
+                holder = (ViewHolder) view.getTag();
+            }
+            ProcessInfo info = mDates.get(i);
+            holder.imageView.setImageDrawable(info.icon);
+            holder.tvName.setText(info.name);
+            holder.tvMemory.setText("占用内存" + Formatter.formatFileSize(getApplicationContext(), info.memory));
+
+            return view;
         }
     }
 
     private class ViewHolder{
-        
+        ImageView imageView;
+        TextView tvName;
+        TextView tvMemory;
+        CheckBox checkBox;
+
     }
     @Override
     protected void onStart() {
