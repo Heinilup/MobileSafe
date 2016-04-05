@@ -61,7 +61,7 @@ public class ProcessManagerActivity extends Activity {
 
         //数据加载
 
-        mDates = null;
+        mDates = ProcessProvider.getAllRunningProcesses(this);
 
         //给ListView加载数据
         mListView.setAdapter(new ProcessAdapter());
