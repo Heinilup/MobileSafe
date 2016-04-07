@@ -1,6 +1,7 @@
 package ikabi.com.mobilesafe.activity;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.Formatter;
 import android.view.View;
@@ -21,6 +22,7 @@ import ikabi.com.mobilesafe.provider.ProcessProvider;
 import ikabi.com.mobilesafe.service.AutoCleanService;
 import ikabi.com.mobilesafe.utils.ServiceStateUtils;
 import ikabi.com.mobilesafe.view.ProgressDesView;
+import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 /**
  * @ Author: Shuangjun Zou (Rob)
@@ -68,7 +70,7 @@ public class ProcessManagerActivity extends Activity {
 
 
     }
-    private class ProcessAdapter extends BaseAdapter{
+    private class ProcessAdapter extends BaseAdapter implements StickyListHeadersAdapter{
 
         @Override
         public int getCount() {
@@ -95,7 +97,7 @@ public class ProcessManagerActivity extends Activity {
         public View getView(int i, android.view.View view, ViewGroup viewGroup) {
             ViewHolder holder = null;
 
-            if (view == null){
+            if (view == null || !(view instanceof TextView)){
                 view = View.inflate(getApplicationContext(),R.layout.item_process,null);
                 holder = new ViewHolder();
                 view.setTag(holder);
@@ -113,6 +115,32 @@ public class ProcessManagerActivity extends Activity {
             holder.tvMemory.setText("占用内存" + Formatter.formatFileSize(getApplicationContext(), info.memory));
 
             return view;
+        }
+
+        @Override
+        public View getHeaderView(int position, View convertView, ViewGroup parent) {
+            ProcessInfo info = mDates.get(position);
+            TextView textView = null;
+            if (convertView == null || !(convertView instanceof TextView)){
+                convertView = new TextView(getApplicationContext());
+                textView = (TextView) convertView;
+                textView.setPadding(8,8,8,8);
+                textView.setBackgroundColor(Color.GRAY);
+                textView.setTextSize(15);
+                textView.setTextColor(Color.BLACK);
+            } else {
+                textView = (TextView) convertView;
+            }
+            boolean isSystem = info.isSystem;
+
+            textView.setText(isSystem ? "系统进程":"用户进程");
+            return convertView;
+        }
+
+        @Override
+        public long getHeaderId(int position) {
+            ProcessInfo info = mDates.get(position);
+            return info.isSystem?1:0;
         }
     }
 

@@ -30,4 +30,5 @@ dependencies {
     compile files('libs/nineoldandroids-2.4.0.jar')
     compile project(':boommenu')
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'se.emilsjolander:stickylistheaders:2.7.0'
 }
