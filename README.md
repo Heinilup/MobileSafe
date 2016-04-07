@@ -2,6 +2,8 @@
 整理近期个人知识点
 陆续增加中ing...
 
+add gerrit for github project.
+
 近期整合添加Boom菜单效果
 
 1. 在线升级--检测版本号
