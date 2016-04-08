@@ -2,7 +2,7 @@
 整理近期个人知识点
 陆续增加中ing...
 
-add gerrit for github project.
+增加Gerrit代码审核在GITHUB提交之前
 
 近期整合添加Boom菜单效果
 
