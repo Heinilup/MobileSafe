@@ -44,13 +44,14 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     private static final String TAG = "HomeActivity";
 
     private final static String[] TITLES = new String[]{"手机防盗", "骚扰拦截",
-            "软件管家", "进程管理", "流量统计", "SwipeLayout", "缓存清理", "常用工具", "文件管理", "媒体播放", "智能家居", "应用市场", "一键锁屏", "BoomMenu"};
+            "软件管家", "进程管理", "流量统计", "SwipeLayout", "缓存清理", "常用工具", "文件管理", "媒体播放", "智能家居", "应用市场", "一键锁屏", "BoomMenu", "闪屏BUG"};
     private final static String[] DESCS = new String[]{"远程定位手机", "全面拦截骚扰",
-            "管理您的软件", "管理运行进程", "流量一目了然", "滑动删除", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器", "物联网", "应用下载安装", "快捷一键锁屏", "爆炸抽屉效果"};
+            "管理您的软件", "管理运行进程", "流量一目了然", "滑动删除", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器", "物联网", "应用下载安装", "快捷一键锁屏", "爆炸抽屉效果", "键盘闪屏BUG"};
 
     private final static int[] ICONS = new int[]{R.drawable.btn_mobile_light,
             R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open, R.drawable.btn_mobile_power_sleep_open, R.drawable.btn_mobile_upgrade,
-            R.drawable.btn_mobile_more, R.drawable.btn_mobile_optimize, R.drawable.btn_mobile_tools, R.drawable.btn_mobile_fonts, R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall, R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open};
+            R.drawable.btn_mobile_more, R.drawable.btn_mobile_optimize, R.drawable.btn_mobile_tools, R.drawable.btn_mobile_fonts,
+            R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall, R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open,R.drawable.btn_mobile_light};
     private GridView mGridView;
     private List<HomeItem> mDates;
     private boolean init = false;
@@ -142,11 +143,20 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 //BoomMenu效果
                 performBoomMenu();
                 break;
+            case 14:
+                //BoomMenu效果
+                performKeyboardPanel();
+                break;
             default:
                 break;
 
         }
 
+    }
+
+    private void performKeyboardPanel() {
+        Intent intent = new Intent(this, BoomMenuActivity.class);
+        startActivity(intent);
     }
 
     private void performBoomMenu() {
