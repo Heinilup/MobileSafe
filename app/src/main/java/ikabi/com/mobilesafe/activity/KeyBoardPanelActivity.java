@@ -1,8 +1,7 @@
 package ikabi.com.mobilesafe.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import ikabi.com.mobilesafe.R;
 
@@ -11,9 +10,9 @@ import ikabi.com.mobilesafe.R;
  * @ Email: seolop@gmail.com
  * @ 2016-04-09 0009
  */
-public class KeyBoardPanelActivity extends AppCompatActivity {
+public class KeyBoardPanelActivity extends Activity {
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keyboard_panel);
     }

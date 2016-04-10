@@ -32,6 +32,7 @@
         <activity android:name=".activity.DragActivity"/>
         <activity android:name=".activity.SwipeActivity"/>
         <activity android:name=".activity.BoomMenuActivity"/>
+        <activity android:name=".activity.KeyBoardPanelActivity"/>
 
         <activity
             android:name=".activity.OneKeyLockScreen"

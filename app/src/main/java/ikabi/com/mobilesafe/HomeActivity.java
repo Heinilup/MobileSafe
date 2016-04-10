@@ -25,6 +25,7 @@ import java.util.List;
 import ikabi.com.mobilesafe.activity.BoomMenuActivity;
 import ikabi.com.mobilesafe.activity.DragActivity;
 import ikabi.com.mobilesafe.activity.FileManagerActivity;
+import ikabi.com.mobilesafe.activity.KeyBoardPanelActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
 import ikabi.com.mobilesafe.activity.OneKeyLockScreen;
 import ikabi.com.mobilesafe.activity.ProcessManagerActivity;
@@ -155,7 +156,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     }
 
     private void performKeyboardPanel() {
-        Intent intent = new Intent(this, BoomMenuActivity.class);
+        Intent intent = new Intent(this, KeyBoardPanelActivity.class);
         startActivity(intent);
     }
 
