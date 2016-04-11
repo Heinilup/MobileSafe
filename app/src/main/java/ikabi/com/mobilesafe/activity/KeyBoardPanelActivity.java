@@ -1,7 +1,9 @@
 package ikabi.com.mobilesafe.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import ikabi.com.mobilesafe.R;
 
@@ -15,5 +17,10 @@ public class KeyBoardPanelActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keyboard_panel);
+    }
+
+    public void onClickUnResolved(final View view) {
+        // 使用差别只是未使用CustomContentRootLayout与PanelRotLayout 并且在切换的时候未使用PanelRootLayout#setIsHide
+        startActivity(new Intent(this, KBPUnresolvedActivity.class));
     }
 }
