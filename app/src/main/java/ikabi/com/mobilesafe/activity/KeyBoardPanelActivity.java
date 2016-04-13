@@ -19,8 +19,13 @@ public class KeyBoardPanelActivity extends Activity {
         setContentView(R.layout.activity_keyboard_panel);
     }
 
+    public void onClickResolved(final View view) {
+        startActivity(new Intent(this, KBPresolvedActivity.class));
+    }
+
     public void onClickUnResolved(final View view) {
         // 使用差别只是未使用CustomContentRootLayout与PanelRotLayout 并且在切换的时候未使用PanelRootLayout#setIsHide
         startActivity(new Intent(this, KBPUnresolvedActivity.class));
     }
+
 }
