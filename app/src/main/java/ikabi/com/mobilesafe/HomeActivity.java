@@ -146,11 +146,11 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 performBoomMenu();
                 break;
             case 14:
-                //BoomMenu效果
+                //键盘与切换动画冲突
                 performKeyboardPanel();
                 break;
             case 15:
-                //BoomMenu效果
+                //短信备份还原
                 performMmsBackUp();
                 break;
             default:
