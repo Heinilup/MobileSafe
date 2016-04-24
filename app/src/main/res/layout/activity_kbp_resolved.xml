@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ikabi.com.mobilesafe.kpswitch.widget.KPSwitchRootLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,12 +10,12 @@
     <include layout="@layout/layout_send_message_bar" />
 
 
-    <cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout
+    <ikabi.com.mobilesafe.kpswitch.widget.KPSwitchPanelLinearLayout
         android:id="@+id/panel_root"
         style="@style/Panel"
         android:visibility="gone">
 
         <include layout="@layout/merge_panel_content" />
-    </cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout>
+    </ikabi.com.mobilesafe.kpswitch.widget.KPSwitchPanelLinearLayout>
 
-</cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout>
+</ikabi.com.mobilesafe.kpswitch.widget.KPSwitchRootLinearLayout>

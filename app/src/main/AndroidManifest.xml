@@ -24,8 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"
-                  android:launchMode="singleTop"/>
+        <activity
+            android:name=".HomeActivity"
+            android:launchMode="singleTop"/>
         <activity android:name=".activity.SettingActivity"/>
         <activity android:name=".activity.FileManagerActivity"/>
         <activity android:name=".activity.SoftManagerActivity"/>
@@ -34,27 +35,35 @@
         <activity android:name=".activity.DragActivity"/>
         <activity android:name=".activity.SwipeActivity"/>
         <activity android:name=".activity.BoomMenuActivity"/>
+
+        <!--解决键盘冲突start-->
         <activity android:name=".activity.KeyBoardPanelActivity"/>
-        <activity android:name=".activity.KBPUnresolvedActivity"
+        <activity
+            android:name=".activity.KBPUnresolvedActivity"
             android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".activity.KBPresolvedActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <!--解决键盘冲突end-->
+
         <activity android:name=".activity.MmsBackupActivity"/>
 
         <activity
             android:name=".activity.OneKeyLockScreen"
-            android:label="@string/app_name"
             android:icon="@drawable/lock_screen"
+            android:label="@string/app_name"
             >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <receiver
             android:name=".receiver.LockScreenReceiver"
-            android:label="@string/one_key_lock_screen"
             android:description="@string/one_key_lock_screen"
+            android:label="@string/one_key_lock_screen"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
                 android:name="android.app.device_admin"
@@ -64,6 +73,7 @@
                     android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".activity.MediaPlayerActivity"
             android:theme="@style/AppBaseTheme"/>

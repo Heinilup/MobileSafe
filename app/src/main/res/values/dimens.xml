@@ -8,4 +8,6 @@
     <dimen name="width_drag">100dp</dimen>
     <dimen name="height_drag">100dp</dimen>
     <dimen name="panel_height">200dp</dimen>
+    <dimen name="min_panel_height">220dp</dimen>
+    <dimen name="max_panel_height">380dp</dimen>
 </resources>
