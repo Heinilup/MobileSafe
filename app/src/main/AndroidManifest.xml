@@ -37,6 +37,7 @@
         <activity android:name=".activity.BoomMenuActivity"/>
 
         <!--解决键盘冲突start-->
+
         <activity android:name=".activity.KeyBoardPanelActivity"/>
         <activity
             android:name=".activity.KBPUnresolvedActivity"
@@ -44,6 +45,12 @@
         <activity
             android:name=".activity.KBPresolvedActivity"
             android:windowSoftInputMode="adjustResize"/>
+
+        <activity
+            android:name=".activity.KBPresolvedFullscreenActivity"
+            android:theme="@style/FullScreenTheme"
+            android:windowSoftInputMode="adjustUnspecified"/>
+
         <!--解决键盘冲突end-->
 
         <activity android:name=".activity.MmsBackupActivity"/>
