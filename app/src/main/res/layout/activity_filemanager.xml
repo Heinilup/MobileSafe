@@ -8,5 +8,7 @@
         style="@style/TitleBarStyle"
         android:text="文件管理器"/>
 
+    <include layout="@layout/activity_filemanager_category_layout"/>
+
 
 </LinearLayout>

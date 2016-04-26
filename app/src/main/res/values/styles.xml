@@ -43,13 +43,47 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!--闪屏键盘控制样式-->
+    <!--闪屏键盘控制样式start-->
     <style name="Panel">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/panel_height</item>
         <item name="android:background">#fffefefe</item>
         <item name="android:orientation">vertical</item>
     </style>
+    <!--闪屏键盘控制样式end-->
+
+    <!--文件管理器图片样式start-->
+
+    <style name="CategoryButtonStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="CategoryButtonIconStyle">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
+    </style>
+
+    <style name="CategoryButtonTextStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#111111</item>
+    </style>
+    <style name="CategoryButtonCountTextStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">#A6A6A6</item>
+        <item name="android:text">1项</item>
+        <item name="android:layout_marginTop">2dp</item>
+    </style>
+
+    <!--文件管理器图片样式end-->
 
     <style name="FullScreenTheme" parent="AppTheme">
         <item name="android:windowFullscreen">true</item>

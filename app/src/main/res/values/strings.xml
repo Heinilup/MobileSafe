@@ -22,4 +22,13 @@
     <string name="press_say">按住说话</string>
     <string name="site">位置</string>
     <string name="picture">照片</string>
+    <string name="image">图片</string>
+    <string name="category_pic">图片</string>
+    <string name="category_video">视频</string>
+    <string name="category_doc">文档</string>
+    <string name="category_music">音乐</string>
+    <string name="category_apk">安装包</string>
+    <string name="category_zip">压缩包</string>
+    <string name="category_fav">收藏</string>
+    <string name="category_bluetooth">蓝牙</string>
 </resources>
