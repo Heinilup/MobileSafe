@@ -31,4 +31,7 @@
     <string name="category_zip">压缩包</string>
     <string name="category_fav">收藏</string>
     <string name="category_bluetooth">蓝牙</string>
+    <string name="root_memory_storage">手机存储</string>
+    <string name="root_sdcard_storage">内部存储</string>
+    <string name="root_sdcard_storage_exten">SD存储卡</string>
 </resources>

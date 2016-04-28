@@ -24,6 +24,7 @@ import java.util.List;
 
 import ikabi.com.mobilesafe.activity.BoomMenuActivity;
 import ikabi.com.mobilesafe.activity.DragActivity;
+import ikabi.com.mobilesafe.activity.FileExplorerActivity;
 import ikabi.com.mobilesafe.activity.FileManagerActivity;
 import ikabi.com.mobilesafe.activity.KeyBoardPanelActivity;
 import ikabi.com.mobilesafe.activity.MediaPlayerActivity;
@@ -46,9 +47,9 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     private static final String TAG = "HomeActivity";
 
     private final static String[] TITLES = new String[]{"手机防盗", "骚扰拦截",
-            "软件管家", "进程管理", "流量统计", "SwipeLayout", "缓存清理", "常用工具", "文件管理", "媒体播放", "智能家居", "应用市场", "一键锁屏", "BoomMenu", "闪屏BUG", "短信备份"};
+            "软件管家", "进程管理", "流量统计", "SwipeLayout", "缓存清理", "常用工具", "文件管理", "媒体播放", "智能家居", "应用市场", "一键锁屏", "BoomMenu", "闪屏BUG", "短信备份", "FileExplorer"};
     private final static String[] DESCS = new String[]{"远程定位手机", "全面拦截骚扰",
-            "管理您的软件", "管理运行进程", "流量一目了然", "滑动删除", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器", "物联网", "应用下载安装", "快捷一键锁屏", "爆炸抽屉效果", "键盘闪屏BUG", "短信备份助手"};
+            "管理您的软件", "管理运行进程", "流量一目了然", "滑动删除", "系统快如火箭", "工具大全", "文件管理器", "媒体播放器", "物联网", "应用下载安装", "快捷一键锁屏", "爆炸抽屉效果", "键盘闪屏BUG", "短信备份助手", "想传就传文件"};
 
     private final static int[] ICONS = new int[]{R.drawable.btn_mobile_light,
             R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open, R.drawable.btn_mobile_power_sleep_open, R.drawable.btn_mobile_upgrade,
@@ -153,11 +154,20 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
                 //短信备份还原
                 performMmsBackUp();
                 break;
+            case 16:
+                //FileExplorer
+                performFileExplorer();
+                break;
             default:
                 break;
 
         }
 
+    }
+
+    private void performFileExplorer() {
+        Intent intent = new Intent(this, FileExplorerActivity.class);
+        startActivity(intent);
     }
 
     private void performMmsBackUp() {
