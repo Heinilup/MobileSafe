@@ -31,10 +31,19 @@
         <activity android:name=".activity.FileManagerActivity"/>
         <activity android:name=".activity.SoftManagerActivity"/>
         <activity android:name=".activity.ProcessManagerActivity"/>
-        <activity android:name=".activity.SmartHomeActivity"/>
+        <activity android:name=".activity.SmartHomeActivity"
+            android:icon="@drawable/btn_mobile_more"
+            android:label="@string/smarthome">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.DragActivity"/>
         <activity android:name=".activity.SwipeActivity"/>
         <activity android:name=".activity.BoomMenuActivity"/>
+
 
         <!--解决键盘冲突start-->
 
@@ -58,7 +67,7 @@
         <activity
             android:name=".activity.OneKeyLockScreen"
             android:icon="@drawable/lock_screen"
-            android:label="@string/app_name"
+            android:label="@string/one_key_lock_screen"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

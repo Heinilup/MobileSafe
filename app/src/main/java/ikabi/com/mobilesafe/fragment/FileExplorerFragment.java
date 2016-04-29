@@ -7,14 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import ikabi.com.mobilesafe.R;
-import ikabi.com.mobilesafe.bean.Catalog;
-import ikabi.com.mobilesafe.utils.FileUtils;
-import ikabi.com.mobilesafe.view.ExplorerControlView;
 
 /**
  * @ Author: Shuangjun Zou (Rob)
@@ -23,16 +16,16 @@ import ikabi.com.mobilesafe.view.ExplorerControlView;
  */
 public class FileExplorerFragment extends Fragment {
 
-    ExplorerControlView explorerControl;
+    //ExplorerControlView explorerControl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fileexplorer, null);
-        init(view);
+        //init(view);
         return view;
     }
 
-    void init(View view) {
+   /* void init(View view) {
         List<Catalog> list = new ArrayList<>();
         Catalog rootCatalog = new Catalog();
         rootCatalog.setImage(R.mipmap.data_folder_memory_default);
@@ -63,5 +56,5 @@ public class FileExplorerFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         explorerControl.onDestroy();
-    }
+    }*/
 }

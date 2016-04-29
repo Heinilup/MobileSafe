@@ -1,3 +1,4 @@
+/*
 package ikabi.com.mobilesafe.fragment;
 
 import android.os.Bundle;
@@ -9,9 +10,11 @@ import android.view.ViewGroup;
 import ikabi.com.mobilesafe.R;
 import ikabi.com.mobilesafe.view.AppBrowserControl;
 
+*/
 /**
  * 安装程序
- */
+ *//*
+
 public class AppFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -21,3 +24,4 @@ public class AppFragment extends Fragment {
         return view;
     }
 }
+*/

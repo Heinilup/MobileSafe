@@ -1,3 +1,4 @@
+/*
 package ikabi.com.mobilesafe.utils;
 
 import android.annotation.SuppressLint;
@@ -33,11 +34,13 @@ import java.util.UUID;
 
 import ikabi.com.mobilesafe.R;
 
+*/
 /**
  * @ Author: Shuangjun Zou (Rob)
  * @ Email:seolop@gmail.com
  * @ Data:16/2/27
- */
+ *//*
+
 public class FileUtils {
 
 
@@ -92,16 +95,20 @@ public class FileUtils {
         return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
     }
 
-    /*
+    */
+/*
      * 是否存在SD存储卡
-     */
+     *//*
+
     public static boolean ExistSDCard() {
         return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
     }
 
-    /*
+    */
+/*
      * 后缀检查
-     */
+     *//*
+
     public static boolean checkEndsWithInStringArray(String checkItsEnd, String[] fileEndings) {
         for (String aEnd : fileEndings) {
             if (checkItsEnd.endsWith(aEnd))
@@ -110,16 +117,20 @@ public class FileUtils {
         return false;
     }
 
-    /*
+    */
+/*
      * 获取存储卡路径
-     */
+     *//*
+
     public static String getStorageCardPath() {
         return Environment.getExternalStorageDirectory().getPath();
     }
 
-    /*
+    */
+/*
      * 时间转换
-     */
+     *//*
+
     @SuppressLint("SimpleDateFormat")
     public static String parseTimeToYMD(long time) {
         System.setProperty("user.timezone", "Asia/Shanghai");
@@ -129,9 +140,11 @@ public class FileUtils {
         return format.format(new Date(time * 1000L));
     }
 
-    /**
+    */
+/**
      * 根据输入的参数大小，进行单位换算，size单位为bit.视情况转换为KB,MB,GB
-     */
+     *//*
+
     public static String parseSize(long size) {
         String sizeStr;
         float kb = 1024;
@@ -156,7 +169,8 @@ public class FileUtils {
         return sizeStr;
     }
 
-    /**
+    */
+/**
      * 获取视频的缩略图 先通过ThumbnailUtils来创建一个视频的缩略图，然后再利用ThumbnailUtils来生成指定大小的缩略图。
      * 如果想要的缩略图的宽和高都小于MICRO_KIND，则类型要使用MICRO_KIND作为kind的值，这样会节省内存。
      *
@@ -166,7 +180,8 @@ public class FileUtils {
      * @param kind      参照MediaStore.Images.Thumbnails类中的常量MINI_KIND和MICRO_KIND。
      *                  其中，MINI_KIND: 512 x 384，MICRO_KIND: 96 x 96
      * @return 指定大小的视频缩略图
-     */
+     *//*
+
     public static Bitmap getVideoThumbnail(String videoPath, int width, int height, int kind) {
         Bitmap bitmap;
         // 获取视频的缩略图
@@ -177,9 +192,11 @@ public class FileUtils {
         return bitmap;
     }
 
-    /*
+    */
+/*
      * 获取外置存储卡路径
-     */
+     *//*
+
     public static List<String> getSdCardPaths() {
 
         List<String> paths = new ArrayList<>();
@@ -228,9 +245,11 @@ public class FileUtils {
     }
 
 
-    /**
+    */
+/**
      * 获取视频时长
-     */
+     *//*
+
     public static String getDuration(int durationSeconds) {
         int hours = durationSeconds / (60 * 60);
         int leftSeconds = durationSeconds % (60 * 60);
@@ -253,9 +272,11 @@ public class FileUtils {
         }
     }
 
-    /**
+    */
+/**
      * 获取版本号
-     */
+     *//*
+
     public static String getVersion(Context context) {
         String version = "";
         try {
@@ -268,9 +289,11 @@ public class FileUtils {
         return version;
     }
 
-    /**
+    */
+/**
      * 获取屏幕宽度
-     */
+     *//*
+
     public static int getScreenWidth(Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
@@ -279,9 +302,11 @@ public class FileUtils {
         return dm.widthPixels;
     }
 
-    /**
+    */
+/**
      * 获取文件MD5值
-     */
+     *//*
+
     public static String getMD5(File file) throws FileNotFoundException {
         String value = null;
         FileInputStream in = new FileInputStream(file);
@@ -303,17 +328,21 @@ public class FileUtils {
         return value;
     }
 
-    /**
+    */
+/**
      * 读取设备号
-     */
+     *//*
+
     public static String getDeviceId() {
         TelephonyManager tm = (TelephonyManager) XFileApplication.context.getSystemService(Context.TELEPHONY_SERVICE);
         return tm.getDeviceId();
     }
 
-    /**
+    */
+/**
      * 根据后缀生成保存路径
-     */
+     *//*
+
     public static String getSavePathByExtension(String extension) {
         StringBuilder sb = new StringBuilder();
         sb.append(Environment.getExternalStorageDirectory().getAbsolutePath());
@@ -409,4 +438,4 @@ public class FileUtils {
         return dFile;
     }
 
-}
+}*/

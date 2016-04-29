@@ -1,3 +1,4 @@
+/*
 package ikabi.com.mobilesafe.view;
 
 import android.content.Context;
@@ -199,3 +200,4 @@ public class PictureBrowserControl extends StickyGridHeadersGridView {
 	}
 
 }
+*/

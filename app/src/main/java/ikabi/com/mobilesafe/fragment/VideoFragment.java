@@ -1,3 +1,4 @@
+/*
 package ikabi.com.mobilesafe.fragment;
 
 import android.os.Bundle;
@@ -9,9 +10,11 @@ import android.view.ViewGroup;
 
 import ikabi.com.mobilesafe.R;
 
+*/
 /**
  * 视频
- */
+ *//*
+
 public class VideoFragment extends Fragment {
 
     @Override
@@ -21,3 +24,4 @@ public class VideoFragment extends Fragment {
     }
 
 }
+*/

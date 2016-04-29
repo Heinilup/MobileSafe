@@ -1,3 +1,4 @@
+/*
 package ikabi.com.mobilesafe.view;
 
 import android.app.Activity;
@@ -28,11 +29,13 @@ import ikabi.com.mobilesafe.adapter.CatalogAdapter;
 import ikabi.com.mobilesafe.adapter.ExplorerAdapter;
 import ikabi.com.mobilesafe.bean.Catalog;
 
+*/
 /**
  * @ Author: Shuangjun Zou (Rob)
  * @ Email:seolop@gmail.com
  * @ Data:2016-04-28 0028
- */
+ *//*
+
 public class ExplorerControlView extends FrameLayout implements AdapterView.OnItemClickListener, View.OnClickListener, PopupMenu.MenuCallback, CustomDialog.DialogCallback {
 
     private Context mContext;
@@ -136,9 +139,11 @@ public class ExplorerControlView extends FrameLayout implements AdapterView.OnIt
         this.activity = activity;
     }
 
-    /**
+    */
+/**
      * 设置导航目录
-     */
+     *//*
+
     public void setCatalog(List<Catalog> catalogList) {
         explorerLayout.setVisibility(GONE);
         catalogListView.setVisibility(VISIBLE);
@@ -175,9 +180,11 @@ public class ExplorerControlView extends FrameLayout implements AdapterView.OnIt
         }
     }
 
-    /**
+    */
+/**
      * 返回上一级目录
-     */
+     *//*
+
     void upDirectory() {
         if (currentFilePath.equals(File.separator) || rootFilePath.equals(currentFilePath)) {
             // 根目录
@@ -255,9 +262,11 @@ public class ExplorerControlView extends FrameLayout implements AdapterView.OnIt
         }
     }
 
-    /**
+    */
+/**
      * 文件操作
-     */
+     *//*
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(OpFileEvent opFileEvent) {
         if (!opFileEvent.isSuccess()) {
@@ -281,4 +290,4 @@ public class ExplorerControlView extends FrameLayout implements AdapterView.OnIt
     public void onDestroy() {
         EventBus.getDefault().unregister(this);
     }
-}
+}*/

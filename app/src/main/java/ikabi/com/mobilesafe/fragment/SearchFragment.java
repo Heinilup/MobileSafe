@@ -1,3 +1,4 @@
+/*
 package ikabi.com.mobilesafe.fragment;
 
 import android.content.Intent;
@@ -40,9 +41,11 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
+*/
 /**
  * 查找-图片,音频,视频三种类型
- */
+ *//*
+
 public class SearchFragment extends Fragment implements PopupMenu.MenuCallback, CustomDialog.DialogCallback, AdapterView.OnItemClickListener {
 
     EditText edtSearch;
@@ -86,9 +89,11 @@ public class SearchFragment extends Fragment implements PopupMenu.MenuCallback, 
     }
 
 
-    /**
+    */
+/**
      * 弹出菜单选择
-     */
+     *//*
+
     @Override
     public void onMenuClick(PopupMenu menu, MenuItem item) {
         switch (item.getItemId()) {
@@ -120,9 +125,11 @@ public class SearchFragment extends Fragment implements PopupMenu.MenuCallback, 
         }
     }
 
-    /**
+    */
+/**
      * 弹出对话框选择事件
-     */
+     *//*
+
     @Override
     public void onDialogClick(int id, TFileInfo tFileInfo, Object... param) {
         switch (id) {
@@ -150,9 +157,11 @@ public class SearchFragment extends Fragment implements PopupMenu.MenuCallback, 
         }
     }
 
-    /**
+    */
+/**
      * 查询数据
-     */
+     *//*
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(FindResEvent searchEvent) {
         switch (searchEvent.getMimeType()) {
@@ -171,9 +180,11 @@ public class SearchFragment extends Fragment implements PopupMenu.MenuCallback, 
 
     }
 
-    /**
+    */
+/**
      * 文件操作
-     */
+     *//*
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(OpFileEvent opFileEvent) {
         if (!opFileEvent.isSuccess()) {
@@ -207,3 +218,4 @@ public class SearchFragment extends Fragment implements PopupMenu.MenuCallback, 
         super.onDestroy();
     }
 }
+*/

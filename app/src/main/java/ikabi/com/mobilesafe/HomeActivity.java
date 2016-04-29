@@ -54,7 +54,8 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     private final static int[] ICONS = new int[]{R.drawable.btn_mobile_light,
             R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open, R.drawable.btn_mobile_power_sleep_open, R.drawable.btn_mobile_upgrade,
             R.drawable.btn_mobile_more, R.drawable.btn_mobile_optimize, R.drawable.btn_mobile_tools, R.drawable.btn_mobile_fonts,
-            R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall, R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open,R.drawable.btn_mobile_light, R.drawable.btn_mobile_power_sleep_open};
+            R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall, R.drawable.btn_mobile_open,
+            R.drawable.btn_mobile_power_none_open,R.drawable.btn_mobile_light, R.drawable.btn_mobile_power_sleep_open, R.drawable.btn_mobile_more};
     private GridView mGridView;
     private List<HomeItem> mDates;
     private boolean init = false;

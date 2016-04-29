@@ -1,3 +1,4 @@
+/*
 package ikabi.com.mobilesafe.adapter;
 
 import android.content.Context;
@@ -132,3 +133,4 @@ public class ExplorerAdapter extends BaseAdapter {
     }
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package ikabi.com.mobilesafe.fragment;
 
 import android.os.Bundle;
@@ -10,9 +11,11 @@ import android.view.ViewGroup;
 import ikabi.com.mobilesafe.R;
 import ikabi.com.mobilesafe.view.PictureBrowserControl;
 
+*/
 /**
  * 图片资源
- */
+ *//*
+
 public class PictureFragment extends Fragment {
 
     @Override
@@ -23,3 +26,4 @@ public class PictureFragment extends Fragment {
         return view;
     }
 }
+*/
