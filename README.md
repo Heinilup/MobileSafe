@@ -1,5 +1,6 @@
 # MobileSafe
 整理近期个人知识点
+
 陆续增加中ing...
 
 陆续整理这一年多所学知识，代码的重构等等。
@@ -33,6 +34,7 @@
 3. QQ效果
 4. 新闻类
 5. Mms and Messaging 由于近期负责Android源生代码的MMS模块，将陆续整理一下MMS机制及流程。
+6. Add FileExplorer to this project
 
 ### 已完成功能
 
