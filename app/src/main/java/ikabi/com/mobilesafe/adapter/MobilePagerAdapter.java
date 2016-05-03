@@ -8,12 +8,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import ikabi.com.mobilesafe.fragment.AppFragment;
 import ikabi.com.mobilesafe.fragment.FileExplorerFragment;
-import ikabi.com.mobilesafe.fragment.MusicFragment;
 import ikabi.com.mobilesafe.fragment.PictureFragment;
-import ikabi.com.mobilesafe.fragment.SearchFragment;
-import ikabi.com.mobilesafe.fragment.VideoFragment;
+
 
 
 /**

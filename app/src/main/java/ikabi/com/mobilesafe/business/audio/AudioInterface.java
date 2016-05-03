@@ -6,14 +6,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 
-import com.huangjiang.business.model.FileType;
-import com.huangjiang.business.model.TFileInfo;
-import com.huangjiang.utils.Logger;
-import com.huangjiang.utils.StringUtils;
-import com.huangjiang.utils.XFileUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.utils.FileUtils;
 
 /**
  * 读取本地音频
@@ -79,7 +77,7 @@ public class AudioInterface {
                 int play_time = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION));// 播放时长
 
                 TFileInfo audio_file = new TFileInfo();
-                audio_file.setTaskId(XFileUtils.buildTaskId());
+                audio_file.setTaskId(FileUtils.buildTaskId());
                 audio_file.setName(display_name);
                 audio_file.setPath(file_path);
                 audio_file.setCreateTime(XFileUtils.parseTimeToYMD(create_time));

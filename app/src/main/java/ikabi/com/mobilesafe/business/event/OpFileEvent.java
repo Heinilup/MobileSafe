@@ -1,6 +1,7 @@
 package ikabi.com.mobilesafe.business.event;
 
-import com.huangjiang.business.model.TFileInfo;
+
+import ikabi.com.mobilesafe.business.model.TFileInfo;
 
 /**
  * 文件操作

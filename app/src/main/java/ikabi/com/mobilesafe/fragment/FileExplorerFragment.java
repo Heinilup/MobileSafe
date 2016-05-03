@@ -17,9 +17,7 @@ import ikabi.com.mobilesafe.utils.FileUtils;
 import ikabi.com.mobilesafe.view.ExplorerControl;
 
 /**
- * @ Author: Shuangjun Zou (Rob)
- * @ Email:seolop@gmail.com
- * @ Data:2016-04-28 0028
+ * 文件浏览
  */
 public class FileExplorerFragment extends Fragment {
 

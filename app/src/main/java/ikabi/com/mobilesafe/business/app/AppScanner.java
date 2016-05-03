@@ -8,12 +8,10 @@ import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Message;
 
-import com.huangjiang.business.model.AppInfo;
-import com.huangjiang.utils.Logger;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class AppScanner {
 

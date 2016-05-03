@@ -5,15 +5,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 
-import com.huangjiang.business.BaseLogic;
-import com.huangjiang.business.event.OpFileEvent;
-import com.huangjiang.business.model.TFileInfo;
-import com.huangjiang.core.ThreadPoolManager;
-import com.huangjiang.utils.Logger;
-import com.huangjiang.utils.StringUtils;
-
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.logging.Logger;
+
+import ikabi.com.mobilesafe.business.BaseLogic;
+import ikabi.com.mobilesafe.business.event.OpFileEvent;
+import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.utils.ThreadPoolManager;
 
 /**
  * 文件操作

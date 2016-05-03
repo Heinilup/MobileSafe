@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ikabi.com.mobilesafe.R;
+import ikabi.com.mobilesafe.adapter.MobilePagerAdapter;
+import ikabi.com.mobilesafe.view.TabBar;
 
 /**
  * @ Author: Shuangjun Zou (Rob)

@@ -11,8 +11,22 @@
     <color name="chatting_list_bg">@color/default_bg</color>
     <color name="app_background">#FFFFFF</color>
 
+    <!--FileExplorer start-->
     <color name="root_listitem_normal">#FFFFFF</color>
     <color name="root_listitem_pressed">#EEEEEE</color>
     <color name="listview_divider_color">#EEEEEE</color>
     <color name="font_txt_gray">#B0C6D1</color>
+    <color name="gray_font">#999999</color>
+    <color name="black_font">#464646</color>
+    <color name="division_line">#ECECEC</color>
+    <color name="blue">#1AC9E9</color>
+    <color name="green">#5EE0BA</color>
+    <color name="green_pressed">#54C9A7</color>
+    <color name="gray_pressed">#F3F3F3</color>
+    <color name="updir_background_normal">#F1F7FA</color>
+    <color name="updir_background_pressed">#EEEEEE</color>
+    <color name="group_header_name_color">#AAC1CD</color>
+    <color name="group_header_select_color">#16C9E9</color>
+    <color name="tab_select">#3DD5F5</color>
+    <!--FileExplorer end-->
 </resources>

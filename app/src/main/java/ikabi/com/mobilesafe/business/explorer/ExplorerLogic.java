@@ -2,15 +2,15 @@ package ikabi.com.mobilesafe.business.explorer;
 
 import android.content.Context;
 
-import com.huangjiang.business.model.FileType;
-import com.huangjiang.business.model.TFileInfo;
-import com.huangjiang.filetransfer.R;
-import com.huangjiang.utils.XFileUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import ikabi.com.mobilesafe.R;
+import ikabi.com.mobilesafe.business.model.FileType;
+import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.utils.FileUtils;
 
 /**
  * 文件查找
@@ -50,16 +50,16 @@ public class ExplorerLogic {
             if (file.isDirectory()) {
                 tFileInfo.setFileType(FileType.Folder);
             } else {
-                tFileInfo.setTaskId(XFileUtils.buildTaskId());
+                tFileInfo.setTaskId(FileUtils.buildTaskId());
                 tFileInfo.setLength(file.length());
-                tFileInfo.setCreateTime(XFileUtils.parseTimeToYMD(file.lastModified()));
-                if (XFileUtils.checkEndsWithInStringArray(fileName, mContext.getResources().getStringArray(R.array.fileEndingImage))) {
+                tFileInfo.setCreateTime(FileUtils.parseTimeToYMD(file.lastModified()));
+                if (FileUtils.checkEndsWithInStringArray(fileName, mContext.getResources().getStringArray(R.array.fileEndingImage))) {
                     tFileInfo.setFileType(FileType.Image);
-                } else if (XFileUtils.checkEndsWithInStringArray(fileName, mContext.getResources().getStringArray(R.array.fileEndingAudio))) {
+                } else if (FileUtils.checkEndsWithInStringArray(fileName, mContext.getResources().getStringArray(R.array.fileEndingAudio))) {
                     tFileInfo.setFileType(FileType.Audio);
-                } else if (XFileUtils.checkEndsWithInStringArray(fileName, mContext.getResources().getStringArray(R.array.fileEndingVideo))) {
+                } else if (FileUtils.checkEndsWithInStringArray(fileName, mContext.getResources().getStringArray(R.array.fileEndingVideo))) {
                     tFileInfo.setFileType(FileType.Video);
-                } else if (XFileUtils.checkEndsWithInStringArray(fileName, mContext.getResources().getStringArray(R.array.fileEndingApk))) {
+                } else if (FileUtils.checkEndsWithInStringArray(fileName, mContext.getResources().getStringArray(R.array.fileEndingApk))) {
                     tFileInfo.setFileType(FileType.Apk);
                 } else {
                     tFileInfo.setFileType(FileType.Normal);

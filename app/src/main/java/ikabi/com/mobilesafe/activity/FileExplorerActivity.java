@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ikabi.com.mobilesafe.R;
+import ikabi.com.mobilesafe.fragment.TabMobileFragment;
 
 /**
  * @ Author: Shuangjun Zou (Rob)
@@ -29,6 +30,8 @@ public class FileExplorerActivity extends FragmentActivity implements View.OnCli
     }
 
     private void initView() {
+        tabMobileFragment = new TabMobileFragment();
+        fragments.add(tabMobileFragment);
 
     }
 

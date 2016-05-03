@@ -2,19 +2,17 @@ package ikabi.com.mobilesafe.business.history;
 
 import android.content.Context;
 
-import com.huangjiang.business.BaseLogic;
-import com.huangjiang.business.event.FindResEvent;
-import com.huangjiang.business.model.FileType;
-import com.huangjiang.business.model.TFileInfo;
-import com.huangjiang.core.ThreadPoolManager;
-import com.huangjiang.dao.DFile;
-import com.huangjiang.dao.DFileDao;
-import com.huangjiang.dao.DaoMaster;
-import com.huangjiang.manager.event.FileEvent;
-import com.huangjiang.utils.XFileUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import ikabi.com.mobilesafe.business.BaseLogic;
+import ikabi.com.mobilesafe.business.event.FindResEvent;
+import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.dao.DFile;
+import ikabi.com.mobilesafe.dao.DFileDao;
+import ikabi.com.mobilesafe.dao.DaoMaster;
+import ikabi.com.mobilesafe.utils.FileEvent;
+import ikabi.com.mobilesafe.utils.FileUtils;
 
 /**
  * 历史消息业务逻辑
@@ -48,7 +46,7 @@ public class HistoryLogic extends BaseLogic {
     }
 
     public void addTMessage(TFileInfo tFileInfo) {
-        DFile dFile = XFileUtils.buildDFile(tFileInfo);
+        DFile dFile = FileUtils.buildDFile(tFileInfo);
         fileDao.insert(dFile);
     }
 

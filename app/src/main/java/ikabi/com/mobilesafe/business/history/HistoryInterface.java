@@ -2,12 +2,12 @@ package ikabi.com.mobilesafe.business.history;
 
 import android.content.Context;
 
-import com.huangjiang.dao.DFile;
-import com.huangjiang.dao.DFileDao;
-import com.huangjiang.dao.DaoMaster;
-import com.huangjiang.utils.Logger;
-
 import java.util.List;
+import java.util.logging.Logger;
+
+import ikabi.com.mobilesafe.dao.DFile;
+import ikabi.com.mobilesafe.dao.DFileDao;
+import ikabi.com.mobilesafe.dao.DaoMaster;
 
 /**
  * 历史消息

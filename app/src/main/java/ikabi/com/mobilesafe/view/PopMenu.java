@@ -8,7 +8,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +54,7 @@ public class PopMenu {
     protected Resources resources;
 
 
-    public PopupMenu(Context context) {
+    public PopMenu(Context context) {
         mContext = context;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mWindowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -81,13 +80,13 @@ public class PopMenu {
         setContentView(mInflater.inflate(R.layout.popup_menu, null));
     }
 
-    public PopupMenu(Context context, int itemPosition, TFileInfo tFileInfo) {
+    public PopMenu(Context context, int itemPosition, TFileInfo tFileInfo) {
         this(context);
         this.itemPosition = itemPosition;
         this.tFileInfo = tFileInfo;
     }
 
-    public PopupMenu(Context context, int itemPosition, int groupPosition, TFileInfo tFileInfo) {
+    public PopMenu(Context context, int itemPosition, int groupPosition, TFileInfo tFileInfo) {
         this(context, itemPosition, tFileInfo);
         this.groupPosition = groupPosition;
     }
@@ -159,7 +158,7 @@ public class PopMenu {
     public void show(View anchor) {
 
         if (mItems.size() == 0) {
-            throw new IllegalStateException("PopupMenu#add was not called with a menu item to display.");
+            throw new IllegalStateException("PopMenu#add was not called with a menu item to display.");
         }
 
         preShow();
@@ -172,7 +171,7 @@ public class PopMenu {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 if (mListener != null) {
-                    mListener.onMenuClick(PopupMenu.this, mItems.get(position));
+                    mListener.onMenuClick(PopMenu.this, mItems.get(position));
                 }
                 mPopupWindow.dismiss();
             }
@@ -235,7 +234,7 @@ public class PopMenu {
 
 
     /**
-     * Register a callback to be invoked when an item in this PopupMenu has
+     * Register a callback to be invoked when an item in this PopMenu has
      * been selected.
      *
      * @param listener
@@ -246,10 +245,10 @@ public class PopMenu {
 
     /**
      * Interface definition for a callback to be invoked when
-     * an item in this PopupMenu has been selected.
+     * an item in this PopMenu has been selected.
      */
     public interface MenuCallback {
-        void onMenuClick(PopupMenu menu, MenuItem item);
+        void onMenuClick(PopMenu menu, MenuItem item);
     }
 
     static class ViewHolder {
@@ -335,7 +334,7 @@ public class PopMenu {
                 @Override
                 public void onClick(View v) {
                     if (mListener != null) {
-                        mListener.onMenuClick(PopupMenu.this, mItems.get(position));
+                        mListener.onMenuClick(PopMenu.this, mItems.get(position));
                     }
                     dismiss();
                 }

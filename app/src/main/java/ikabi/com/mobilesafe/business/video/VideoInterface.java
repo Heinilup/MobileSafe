@@ -6,14 +6,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 
-import com.huangjiang.business.model.FileType;
-import com.huangjiang.business.model.TFileInfo;
-import com.huangjiang.utils.Logger;
-import com.huangjiang.utils.StringUtils;
-import com.huangjiang.utils.XFileUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.utils.FileUtils;
 
 /**
  * 视频查询接口
@@ -79,10 +77,10 @@ public class VideoInterface {
                 int play_time = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION));// 播放时长
 
                 TFileInfo video_file = new TFileInfo();
-                video_file.setTaskId(XFileUtils.buildTaskId());
+                video_file.setTaskId(FileUtils.buildTaskId());
                 video_file.setName(display_name);
                 video_file.setPath(file_path);
-                video_file.setCreateTime(XFileUtils.parseTimeToYMD(create_time));
+                video_file.setCreateTime(FileUtils.parseTimeToYMD(create_time));
                 video_file.setLength(size);
                 video_file.setPlayTime(play_time);
                 video_file.setFullName(display_name);

@@ -2,12 +2,11 @@ package ikabi.com.mobilesafe.business.app;
 
 import android.content.Context;
 
-import com.huangjiang.business.BaseLogic;
-import com.huangjiang.business.event.FindResEvent;
-import com.huangjiang.business.model.TFileInfo;
-import com.huangjiang.core.ThreadPoolManager;
-
 import java.util.List;
+
+import ikabi.com.mobilesafe.business.BaseLogic;
+import ikabi.com.mobilesafe.business.event.FindResEvent;
+import ikabi.com.mobilesafe.business.model.TFileInfo;
 
 /**
  * 查找本地安装程序

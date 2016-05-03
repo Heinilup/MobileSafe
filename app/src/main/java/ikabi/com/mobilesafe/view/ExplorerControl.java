@@ -2,13 +2,10 @@ package ikabi.com.mobilesafe.view;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -26,9 +23,7 @@ import java.util.List;
 import eventbus.EventBus;
 import eventbus.Subscribe;
 import eventbus.ThreadMode;
-import ikabi.com.mobilesafe.HomeActivity;
 import ikabi.com.mobilesafe.R;
-import ikabi.com.mobilesafe.XFileApplication;
 import ikabi.com.mobilesafe.adapter.CatalogAdapter;
 import ikabi.com.mobilesafe.adapter.ExplorerAdapter;
 import ikabi.com.mobilesafe.business.OpFile.OpLogic;
@@ -213,7 +208,7 @@ public class ExplorerControl extends FrameLayout implements OnItemClickListener,
             case R.id.more_rename:
                 DialogHelper.showRename(activity, tFileInfo, ExplorerControl.this);
                 break;
-            case R.id.more_uninstall:
+            /*case R.id.more_uninstall:
                 opLogic.unInstall(tFileInfo);
                 break;
             case R.id.more_back:
@@ -227,12 +222,12 @@ public class ExplorerControl extends FrameLayout implements OnItemClickListener,
                 break;
             case R.id.dialog_rename_ok:
                 opLogic.renameFile(tFileInfo, (String) params[0]);
-                break;
+                break;*/
         }
     }
 
-    @Override
-    public void onMenuClick(PopupMenu menu, MenuItem item) {
+    /*@Override
+    public void onMenuClick(PopMenu menu, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_transfer:
                 if (XFileApplication.connect_type == 0) {
@@ -260,7 +255,7 @@ public class ExplorerControl extends FrameLayout implements OnItemClickListener,
                 DialogHelper.showMore(activity, menu.getTFileInfo(), ExplorerControl.this);
                 break;
         }
-    }
+    }*/
 
     /**
      * 文件操作
@@ -287,5 +282,10 @@ public class ExplorerControl extends FrameLayout implements OnItemClickListener,
 
     public void onDestroy() {
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onMenuClick(PopMenu menu, ikabi.com.mobilesafe.view.MenuItem item) {
+
     }
 }

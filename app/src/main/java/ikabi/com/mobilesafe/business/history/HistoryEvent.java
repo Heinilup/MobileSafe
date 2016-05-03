@@ -1,8 +1,9 @@
 package ikabi.com.mobilesafe.business.history;
 
-import com.huangjiang.business.model.TFileInfo;
 
 import java.util.List;
+
+import ikabi.com.mobilesafe.business.model.TFileInfo;
 
 /**
  * 历史消息

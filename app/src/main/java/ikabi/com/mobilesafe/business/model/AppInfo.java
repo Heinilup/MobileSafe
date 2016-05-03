@@ -2,7 +2,7 @@ package ikabi.com.mobilesafe.business.model;
 
 import android.graphics.drawable.Drawable;
 
-import com.huangjiang.utils.XFileUtils;
+import ikabi.com.mobilesafe.utils.FileUtils;
 
 public class AppInfo {
 
@@ -20,7 +20,7 @@ public class AppInfo {
 	}
 
 	public String getAppSizeStr() {
-		return XFileUtils.parseSize(appSize);
+		return FileUtils.parseSize(appSize);
 	}
 
 	public String getAppName() {

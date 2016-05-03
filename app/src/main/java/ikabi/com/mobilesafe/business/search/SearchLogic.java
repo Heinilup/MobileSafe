@@ -2,18 +2,17 @@ package ikabi.com.mobilesafe.business.search;
 
 import android.content.Context;
 
-import com.huangjiang.business.BaseLogic;
-import com.huangjiang.business.app.AppInterface;
-import com.huangjiang.business.audio.AudioInterface;
-import com.huangjiang.business.event.FindResEvent;
-import com.huangjiang.business.image.ImageInterface;
-import com.huangjiang.business.model.TFileInfo;
-import com.huangjiang.business.video.VideoInterface;
-import com.huangjiang.core.ThreadPoolManager;
-import com.huangjiang.utils.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import ikabi.com.mobilesafe.business.BaseLogic;
+import ikabi.com.mobilesafe.business.app.AppInterface;
+import ikabi.com.mobilesafe.business.audio.AudioInterface;
+import ikabi.com.mobilesafe.business.event.FindResEvent;
+import ikabi.com.mobilesafe.business.image.ImageInterface;
+import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.business.video.VideoInterface;
 
 /**
  * 在图片,音频,视频三种资源里面查找

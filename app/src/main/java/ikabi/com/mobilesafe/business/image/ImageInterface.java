@@ -6,14 +6,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 
-import com.huangjiang.business.model.FileType;
-import com.huangjiang.business.model.TFileInfo;
-import com.huangjiang.utils.Logger;
-import com.huangjiang.utils.StringUtils;
-import com.huangjiang.utils.XFileUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.utils.FileUtils;
 
 /**
  * 读取本地图片
@@ -78,10 +76,10 @@ public class ImageInterface {
                 long size = cursor.getLong(cursor.getColumnIndex(MediaStore.Images.Media.SIZE));// 文件大小
 
                 TFileInfo image_file = new TFileInfo();
-                image_file.setTaskId(XFileUtils.buildTaskId());
+                image_file.setTaskId(FileUtils.buildTaskId());
                 image_file.setName(display_name);
                 image_file.setPath(file_path);
-                image_file.setCreateTime(XFileUtils.parseTimeToYMD(create_time));
+                image_file.setCreateTime(FileUtils.parseTimeToYMD(create_time));
                 image_file.setLength(size);
                 image_file.setFullName(display_name);
                 if (!StringUtils.isEmpty(display_name) && display_name.lastIndexOf(".") != -1) {

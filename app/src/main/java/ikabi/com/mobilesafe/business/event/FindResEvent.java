@@ -1,8 +1,9 @@
 package ikabi.com.mobilesafe.business.event;
 
-import com.huangjiang.business.model.TFileInfo;
 
 import java.util.List;
+
+import ikabi.com.mobilesafe.business.model.TFileInfo;
 
 /**
  *

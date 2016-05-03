@@ -5,15 +5,13 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import com.huangjiang.business.model.FileType;
-import com.huangjiang.business.model.TFileInfo;
-import com.huangjiang.utils.Logger;
-import com.huangjiang.utils.StringUtils;
-import com.huangjiang.utils.XFileUtils;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.utils.FileUtils;
 
 /**
  * 搜索本地安装程序
@@ -43,7 +41,7 @@ public class AppInterface {
                 if ((pi.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                     TFileInfo appFile = new TFileInfo();
                     String display_name = pi.applicationInfo.loadLabel(pm).toString();
-                    appFile.setTaskId(XFileUtils.buildTaskId());
+                    appFile.setTaskId(FileUtils.buildTaskId());
                     appFile.setPath(pi.applicationInfo.publicSourceDir);//安装包路径
                     appFile.setName(display_name);//程序名称
                     appFile.setPackageName(pi.applicationInfo.packageName);//包名

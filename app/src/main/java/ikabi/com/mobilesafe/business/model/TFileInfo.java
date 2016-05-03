@@ -1,6 +1,7 @@
 package ikabi.com.mobilesafe.business.model;
 
-import com.huangjiang.manager.event.FileEvent;
+
+import ikabi.com.mobilesafe.utils.FileEvent;
 
 /**
  * 传输文件实体
