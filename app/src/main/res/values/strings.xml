@@ -23,6 +23,7 @@
     <string name="site">位置</string>
     <string name="picture">照片</string>
     <string name="image">图片</string>
+    <!--文件管理器FileExplorer-->
     <string name="category_pic">图片</string>
     <string name="category_video">视频</string>
     <string name="category_doc">文档</string>
@@ -34,4 +35,16 @@
     <string name="root_memory_storage">手机存储</string>
     <string name="root_sdcard_storage">内部存储</string>
     <string name="root_sdcard_storage_exten">SD存储卡</string>
+    <string name="mime_audio">音频</string>
+    <string name="mime_video">视频</string>
+    <string name="mime_image">图片</string>
+    <string name="mime_app">应用</string>
+    <string name="mime_normal">文件</string>
+    <string name="property_name">名称:%1$s</string>
+    <string name="property_type">类型:%1$s</string>
+    <string name="property_path">位置:%1$s</string>
+    <string name="property_size">大小:%1$s</string>
+    <string name="property_edit_time">修改日期:%1$s</string>
+    <string name="up_dir">上一级</string>
+    <!--文件管理器FileExplorer-->
 </resources>

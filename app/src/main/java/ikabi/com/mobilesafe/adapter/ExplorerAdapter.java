@@ -1,4 +1,3 @@
-/*
 package ikabi.com.mobilesafe.adapter;
 
 import android.content.Context;
@@ -9,14 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.huangjiang.business.model.FileType;
-import com.huangjiang.business.model.TFileInfo;
-import com.huangjiang.core.ImageLoader;
-import com.huangjiang.filetransfer.R;
-import com.huangjiang.utils.XFileUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import ikabi.com.mobilesafe.R;
+import ikabi.com.mobilesafe.business.model.FileType;
+import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.utils.FileUtils;
+import ikabi.com.mobilesafe.utils.ImageLoader;
 
 public class ExplorerAdapter extends BaseAdapter {
 
@@ -104,7 +103,7 @@ public class ExplorerAdapter extends BaseAdapter {
             holder.name.setText(tFileInfo.getName());
         } else {
             holder.size.setVisibility(View.VISIBLE);
-            holder.size.setText(XFileUtils.parseSize(tFileInfo.getLength()));
+            holder.size.setText(FileUtils.parseSize(tFileInfo.getLength()));
             holder.name.setText(tFileInfo.getName());
             switch (tFileInfo.getFileType()) {
                 case Normal:
@@ -133,4 +132,3 @@ public class ExplorerAdapter extends BaseAdapter {
     }
 
 }
-*/

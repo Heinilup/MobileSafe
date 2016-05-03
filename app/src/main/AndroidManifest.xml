@@ -44,6 +44,9 @@
         <activity android:name=".activity.SwipeActivity"/>
         <activity android:name=".activity.BoomMenuActivity"/>
 
+        <!--FileExplorer-->
+        <activity android:name=".activity.FileExplorerActivity"/>
+
 
         <!--解决键盘冲突start-->
 

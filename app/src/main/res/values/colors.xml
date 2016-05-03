@@ -10,4 +10,9 @@
     <color name="default_bg">#ebebeb</color>
     <color name="chatting_list_bg">@color/default_bg</color>
     <color name="app_background">#FFFFFF</color>
+
+    <color name="root_listitem_normal">#FFFFFF</color>
+    <color name="root_listitem_pressed">#EEEEEE</color>
+    <color name="listview_divider_color">#EEEEEE</color>
+    <color name="font_txt_gray">#B0C6D1</color>
 </resources>

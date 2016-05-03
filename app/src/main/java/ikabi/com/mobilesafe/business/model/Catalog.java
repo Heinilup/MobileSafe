@@ -1,9 +1,7 @@
-package ikabi.com.mobilesafe.bean;
+package ikabi.com.mobilesafe.business.model;
 
 /**
- * @ Author: Shuangjun Zou (Rob)
- * @ Email:seolop@gmail.com
- * @ Data:2016-04-28 0028
+ * 根目录指引
  */
 public class Catalog {
 

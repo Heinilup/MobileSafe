@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_shape"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_5">
+
+    <TextView
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_50"
+        android:gravity="center"
+        android:text="@string/more"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_17" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0.15"
+        android:background="@color/division_line" />
+
+    <Button
+        android:id="@+id/more_del"
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_50"
+        android:background="@drawable/menu_selector"
+        android:text="@string/delete"
+        android:textColor="@color/gray_font"
+        android:textSize="@dimen/sp_17" />
+
+    <View
+        android:id="@+id/more_del_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0.15"
+        android:background="@color/division_line" />
+
+    <Button
+        android:id="@+id/more_rename"
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_50"
+        android:background="@drawable/menu_selector"
+        android:text="@string/rename"
+        android:textColor="@color/gray_font"
+        android:textSize="@dimen/sp_17" />
+
+    <View
+        android:id="@+id/more_rename_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0.15"
+        android:background="@color/division_line" />
+
+    <Button
+        android:id="@+id/more_uninstall"
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_50"
+        android:background="@drawable/menu_selector"
+        android:text="@string/uninstall"
+        android:textColor="@color/gray_font"
+        android:textSize="@dimen/sp_17" />
+
+    <View
+        android:id="@+id/more_uninstall_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0.15"
+        android:background="@color/division_line" />
+
+    <Button
+        android:id="@+id/more_back"
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_50"
+        android:background="@drawable/menu_selector"
+        android:text="@string/back"
+        android:textColor="@color/gray_font"
+        android:textSize="@dimen/sp_17" />
+
+    <View
+        android:id="@+id/more_back_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0.15"
+        android:background="@color/division_line" />
+
+    <Button
+        android:id="@+id/more_property"
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_50"
+        android:background="@drawable/menu_selector"
+        android:text="@string/property"
+        android:textColor="@color/gray_font"
+        android:textSize="@dimen/sp_17" />
+
+
+</LinearLayout>

@@ -1,4 +1,3 @@
-/*
 package ikabi.com.mobilesafe.view;
 
 import android.app.Activity;
@@ -12,6 +11,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,20 +23,24 @@ import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
+import eventbus.EventBus;
+import eventbus.Subscribe;
+import eventbus.ThreadMode;
 import ikabi.com.mobilesafe.HomeActivity;
 import ikabi.com.mobilesafe.R;
+import ikabi.com.mobilesafe.XFileApplication;
 import ikabi.com.mobilesafe.adapter.CatalogAdapter;
 import ikabi.com.mobilesafe.adapter.ExplorerAdapter;
-import ikabi.com.mobilesafe.bean.Catalog;
+import ikabi.com.mobilesafe.business.OpFile.OpLogic;
+import ikabi.com.mobilesafe.business.event.OpFileEvent;
+import ikabi.com.mobilesafe.business.explorer.ExplorerLogic;
+import ikabi.com.mobilesafe.business.model.Catalog;
+import ikabi.com.mobilesafe.business.model.TFileInfo;
 
-*/
 /**
- * @ Author: Shuangjun Zou (Rob)
- * @ Email:seolop@gmail.com
- * @ Data:2016-04-28 0028
- *//*
-
-public class ExplorerControlView extends FrameLayout implements AdapterView.OnItemClickListener, View.OnClickListener, PopupMenu.MenuCallback, CustomDialog.DialogCallback {
+ * 文件浏览器
+ */
+public class ExplorerControl extends FrameLayout implements OnItemClickListener, View.OnClickListener, PopMenu.MenuCallback, CustomDialog.DialogCallback {
 
     private Context mContext;
     private String rootFilePath = "";
@@ -139,11 +143,9 @@ public class ExplorerControlView extends FrameLayout implements AdapterView.OnIt
         this.activity = activity;
     }
 
-    */
-/**
+    /**
      * 设置导航目录
-     *//*
-
+     */
     public void setCatalog(List<Catalog> catalogList) {
         explorerLayout.setVisibility(GONE);
         catalogListView.setVisibility(VISIBLE);
@@ -180,11 +182,9 @@ public class ExplorerControlView extends FrameLayout implements AdapterView.OnIt
         }
     }
 
-    */
-/**
+    /**
      * 返回上一级目录
-     *//*
-
+     */
     void upDirectory() {
         if (currentFilePath.equals(File.separator) || rootFilePath.equals(currentFilePath)) {
             // 根目录
@@ -262,11 +262,9 @@ public class ExplorerControlView extends FrameLayout implements AdapterView.OnIt
         }
     }
 
-    */
-/**
+    /**
      * 文件操作
-     *//*
-
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(OpFileEvent opFileEvent) {
         if (!opFileEvent.isSuccess()) {
@@ -290,4 +288,4 @@ public class ExplorerControlView extends FrameLayout implements AdapterView.OnIt
     public void onDestroy() {
         EventBus.getDefault().unregister(this);
     }
-}*/
+}

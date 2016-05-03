@@ -7,7 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import ikabi.com.mobilesafe.R;
+import ikabi.com.mobilesafe.business.model.Catalog;
+import ikabi.com.mobilesafe.utils.FileUtils;
+import ikabi.com.mobilesafe.view.ExplorerControl;
 
 /**
  * @ Author: Shuangjun Zou (Rob)
@@ -16,16 +23,16 @@ import ikabi.com.mobilesafe.R;
  */
 public class FileExplorerFragment extends Fragment {
 
-    //ExplorerControlView explorerControl;
+    ExplorerControl explorerControl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fileexplorer, null);
-        //init(view);
+        init(view);
         return view;
     }
 
-   /* void init(View view) {
+    void init(View view) {
         List<Catalog> list = new ArrayList<>();
         Catalog rootCatalog = new Catalog();
         rootCatalog.setImage(R.mipmap.data_folder_memory_default);
@@ -47,7 +54,7 @@ public class FileExplorerFragment extends Fragment {
             outSdCard.setPath(string);
             list.add(outSdCard);
         }
-        explorerControl = (ExplorerControlView) view.findViewById(R.id.explorer);
+        explorerControl = (ExplorerControl) view.findViewById(R.id.explorer);
         explorerControl.setActivity(getActivity());
         explorerControl.setCatalog(list);
     }
@@ -56,5 +63,5 @@ public class FileExplorerFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         explorerControl.onDestroy();
-    }*/
+    }
 }

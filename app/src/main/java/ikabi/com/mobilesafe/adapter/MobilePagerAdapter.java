@@ -1,4 +1,4 @@
-/*
+
 package ikabi.com.mobilesafe.adapter;
 
 import android.support.v4.app.Fragment;
@@ -15,12 +15,12 @@ import ikabi.com.mobilesafe.fragment.PictureFragment;
 import ikabi.com.mobilesafe.fragment.SearchFragment;
 import ikabi.com.mobilesafe.fragment.VideoFragment;
 
-*/
+
 /**
  * @ Author: Shuangjun Zou (Rob)
  * @ Email:seolop@gmail.com
  * @ Data:2016-04-28 0028
- *//*
+ */
 
 public class MobilePagerAdapter extends FragmentStatePagerAdapter {
 
@@ -29,12 +29,12 @@ public class MobilePagerAdapter extends FragmentStatePagerAdapter {
 
     public MobilePagerAdapter(FragmentManager fm) {
         super(fm);
-        fragments.add(new SearchFragment());
+        //fragments.add(new SearchFragment());
         fragments.add(new FileExplorerFragment());
         fragments.add(new PictureFragment());
-        fragments.add(new MusicFragment());
-        fragments.add(new VideoFragment());
-        fragments.add(new AppFragment());
+        //fragments.add(new MusicFragment());
+        //fragments.add(new VideoFragment());
+        //fragments.add(new AppFragment());
     }
 
 
@@ -48,4 +48,3 @@ public class MobilePagerAdapter extends FragmentStatePagerAdapter {
         return fragments.size();
     }
 }
-*/

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="fileBrowserUpdir" type="id" />
+    <item name="selected_view" type="id" />
+    <item name="menu_transfer" type="id" />
+    <item name="menu_open" type="id" />
+    <item name="menu_more" type="id" />
+    <item name="menu_delete" type="id" />
+    <item name="menu_rename" type="id" />
+    <item name="menu_property" type="id" />
+    <item name="menu_stop" type="id" />
+    <item name="menu_cancel" type="id" />
+    <item name="menu_resume" type="id" />
+    <item name="listview_catalog_id" type="id" />
+    <item name="listview_explorer_id" type="id" />
+
+
+</resources>

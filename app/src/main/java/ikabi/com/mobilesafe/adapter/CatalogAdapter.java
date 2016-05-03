@@ -1,4 +1,3 @@
-/*
 package ikabi.com.mobilesafe.adapter;
 
 import android.content.Context;
@@ -9,11 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.huangjiang.business.model.Catalog;
-import com.huangjiang.filetransfer.R;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import ikabi.com.mobilesafe.R;
+import ikabi.com.mobilesafe.business.model.Catalog;
 
 public class CatalogAdapter extends BaseAdapter {
 
@@ -73,4 +72,3 @@ public class CatalogAdapter extends BaseAdapter {
     }
 
 }
-*/
