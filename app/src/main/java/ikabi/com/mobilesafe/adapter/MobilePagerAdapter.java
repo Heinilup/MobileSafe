@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ikabi.com.mobilesafe.fragment.FileExplorerFragment;
-import ikabi.com.mobilesafe.fragment.PictureFragment;
 
 
 
@@ -29,7 +28,7 @@ public class MobilePagerAdapter extends FragmentStatePagerAdapter {
 
         //fragments.add(new SearchFragment());
         fragments.add(new FileExplorerFragment());
-        fragments.add(new PictureFragment());
+        //fragments.add(new PictureFragment());
         //fragments.add(new MusicFragment());
         //fragments.add(new VideoFragment());
         //fragments.add(new AppFragment());

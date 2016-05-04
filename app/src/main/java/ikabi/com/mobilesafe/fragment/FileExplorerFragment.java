@@ -1,8 +1,8 @@
 package ikabi.com.mobilesafe.fragment;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +15,8 @@ import ikabi.com.mobilesafe.R;
 import ikabi.com.mobilesafe.business.model.Catalog;
 import ikabi.com.mobilesafe.utils.FileUtils;
 import ikabi.com.mobilesafe.view.ExplorerControl;
+
+;
 
 /**
  * 文件浏览

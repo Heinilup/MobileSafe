@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,10 @@ public class FileExplorerActivity extends FragmentActivity implements View.OnCli
     private int mTabIndex;
     ImageView fileThumb;
     FrameLayout head_layout;
+
+    TextView tvPersonNumber, tvCountNumber, tvFileNumber;
+
+    private TextView device_name, connect_device_name;
     public List<Fragment> fragments = new ArrayList<Fragment>();
 
     @Override
@@ -41,6 +46,8 @@ public class FileExplorerActivity extends FragmentActivity implements View.OnCli
         setContentView(R.layout.activity_file_explorer);
         //EventBus.getDefault().register(this);
         initView();
+        initData();
+
     }
     @Override
     protected void onDestroy() {
@@ -54,6 +61,13 @@ public class FileExplorerActivity extends FragmentActivity implements View.OnCli
         tabMobileFragment = new TabMobileFragment();
         fragments.add(tabMobileFragment);
 
+    }
+    void initData() {
+        tvPersonNumber.setText(String.format(getString(R.string.person_number), "0"));
+        tvCountNumber.setText(String.format(getString(R.string.count_number), "0"));
+        tvFileNumber.setText(String.format(getString(R.string.file_total_b), "0.00"));
+        device_name.setText(android.os.Build.MODEL);
+        //startService(new Intent(this, IMService.class));
     }
 
     @Override
