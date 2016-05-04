@@ -7,11 +7,12 @@ import android.os.Environment;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.logging.Logger;
 
 import ikabi.com.mobilesafe.business.BaseLogic;
 import ikabi.com.mobilesafe.business.event.OpFileEvent;
 import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.utils.Logger;
+import ikabi.com.mobilesafe.utils.StringUtils;
 import ikabi.com.mobilesafe.utils.ThreadPoolManager;
 
 /**

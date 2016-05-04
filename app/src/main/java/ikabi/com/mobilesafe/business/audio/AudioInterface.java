@@ -8,10 +8,12 @@ import android.provider.MediaStore;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
+import ikabi.com.mobilesafe.business.model.FileType;
 import ikabi.com.mobilesafe.business.model.TFileInfo;
 import ikabi.com.mobilesafe.utils.FileUtils;
+import ikabi.com.mobilesafe.utils.Logger;
+import ikabi.com.mobilesafe.utils.StringUtils;
 
 /**
  * 读取本地音频
@@ -80,7 +82,7 @@ public class AudioInterface {
                 audio_file.setTaskId(FileUtils.buildTaskId());
                 audio_file.setName(display_name);
                 audio_file.setPath(file_path);
-                audio_file.setCreateTime(XFileUtils.parseTimeToYMD(create_time));
+                audio_file.setCreateTime(FileUtils.parseTimeToYMD(create_time));
                 audio_file.setLength(size);
                 audio_file.setPlayTime(play_time);
                 audio_file.setFullName(display_name);

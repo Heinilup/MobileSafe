@@ -7,12 +7,14 @@ import java.util.List;
 
 import ikabi.com.mobilesafe.business.BaseLogic;
 import ikabi.com.mobilesafe.business.event.FindResEvent;
+import ikabi.com.mobilesafe.business.model.FileType;
 import ikabi.com.mobilesafe.business.model.TFileInfo;
 import ikabi.com.mobilesafe.dao.DFile;
 import ikabi.com.mobilesafe.dao.DFileDao;
 import ikabi.com.mobilesafe.dao.DaoMaster;
 import ikabi.com.mobilesafe.utils.FileEvent;
 import ikabi.com.mobilesafe.utils.FileUtils;
+import ikabi.com.mobilesafe.utils.ThreadPoolManager;
 
 /**
  * 历史消息业务逻辑
@@ -75,7 +77,7 @@ public class HistoryLogic extends BaseLogic {
                     tFileInfo.setFileEvent(FileEvent.SET_FILE_SUCCESS);
                     break;
             }
-            FileType fileType = XFileUtils.getFileType(context, dFile.getFullName());
+            FileType fileType = FileUtils.getFileType(context, dFile.getFullName());
             tFileInfo.setFileType(fileType);
             list.add(tFileInfo);
         }

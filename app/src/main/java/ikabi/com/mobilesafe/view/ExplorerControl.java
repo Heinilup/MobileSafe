@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -24,6 +25,8 @@ import eventbus.EventBus;
 import eventbus.Subscribe;
 import eventbus.ThreadMode;
 import ikabi.com.mobilesafe.R;
+import ikabi.com.mobilesafe.XFileApplication;
+import ikabi.com.mobilesafe.activity.FileExplorerActivity;
 import ikabi.com.mobilesafe.adapter.CatalogAdapter;
 import ikabi.com.mobilesafe.adapter.ExplorerAdapter;
 import ikabi.com.mobilesafe.business.OpFile.OpLogic;
@@ -226,23 +229,23 @@ public class ExplorerControl extends FrameLayout implements OnItemClickListener,
         }
     }
 
-    /*@Override
+    @Override
     public void onMenuClick(PopMenu menu, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_transfer:
                 if (XFileApplication.connect_type == 0) {
-                    mContext.startActivity(new Intent(activity, ConnectActivity.class));
+                    //mContext.startActivity(new Intent(activity, ConnectActivity.class));
                     return;
                 }
                 ImageView image = (ImageView) explorerListView.getChildAt(menu.getItemPosition()).findViewById(R.id.img);
                 if (image != null) {
                     Drawable drawable = image.getDrawable();
-                    HomeActivity homeActivity = (HomeActivity) activity;
+                    FileExplorerActivity fileExplorerActivity = (FileExplorerActivity) activity;
                     int[] location = new int[2];
                     image.getLocationOnScreen(location);
-                    homeActivity.initFileThumbView(drawable, image.getWidth(), image.getHeight(), location[0], location[1]);
+                    fileExplorerActivity.initFileThumbView(drawable, image.getWidth(), image.getHeight(), location[0], location[1]);
                     TFileInfo tFileInfo = menu.getTFileInfo();
-                    IMFileManager.getInstance().createTask(tFileInfo);
+                    //IMFileManager.getInstance().createTask(tFileInfo);
                 }
                 break;
             case R.id.menu_open:
@@ -255,7 +258,7 @@ public class ExplorerControl extends FrameLayout implements OnItemClickListener,
                 DialogHelper.showMore(activity, menu.getTFileInfo(), ExplorerControl.this);
                 break;
         }
-    }*/
+    }
 
     /**
      * 文件操作
@@ -284,8 +287,4 @@ public class ExplorerControl extends FrameLayout implements OnItemClickListener,
         EventBus.getDefault().unregister(this);
     }
 
-    @Override
-    public void onMenuClick(PopMenu menu, ikabi.com.mobilesafe.view.MenuItem item) {
-
-    }
 }

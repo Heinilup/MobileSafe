@@ -7,6 +7,7 @@ import java.util.List;
 import ikabi.com.mobilesafe.business.BaseLogic;
 import ikabi.com.mobilesafe.business.event.FindResEvent;
 import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.utils.ThreadPoolManager;
 
 /**
  * 查找本地安装程序

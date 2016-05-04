@@ -1,4 +1,4 @@
-package com.huangjiang.view;
+package ikabi.com.mobilesafe.view;
 
 import android.content.Context;
 import android.database.Cursor;

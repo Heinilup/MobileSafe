@@ -5,7 +5,7 @@
              android:background="@color/app_background"
              android:orientation="vertical">
 
-    <ikabi.com.mobilesafe.view.ExplorerControlView
+    <ikabi.com.mobilesafe.view.ExplorerControl
         android:id="@+id/explorer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

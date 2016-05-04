@@ -3,11 +3,11 @@ package ikabi.com.mobilesafe.business.history;
 import android.content.Context;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import ikabi.com.mobilesafe.dao.DFile;
 import ikabi.com.mobilesafe.dao.DFileDao;
 import ikabi.com.mobilesafe.dao.DaoMaster;
+import ikabi.com.mobilesafe.utils.Logger;
 
 /**
  * 历史消息

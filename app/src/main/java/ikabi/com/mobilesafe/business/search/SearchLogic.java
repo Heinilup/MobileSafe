@@ -4,7 +4,6 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import ikabi.com.mobilesafe.business.BaseLogic;
 import ikabi.com.mobilesafe.business.app.AppInterface;
@@ -13,6 +12,8 @@ import ikabi.com.mobilesafe.business.event.FindResEvent;
 import ikabi.com.mobilesafe.business.image.ImageInterface;
 import ikabi.com.mobilesafe.business.model.TFileInfo;
 import ikabi.com.mobilesafe.business.video.VideoInterface;
+import ikabi.com.mobilesafe.utils.Logger;
+import ikabi.com.mobilesafe.utils.ThreadPoolManager;
 
 /**
  * 在图片,音频,视频三种资源里面查找

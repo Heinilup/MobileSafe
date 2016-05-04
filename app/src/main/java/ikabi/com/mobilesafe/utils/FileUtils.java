@@ -32,7 +32,11 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
 
+import ikabi.com.mobilesafe.R;
 import ikabi.com.mobilesafe.XFileApplication;
+import ikabi.com.mobilesafe.business.model.FileType;
+import ikabi.com.mobilesafe.business.model.TFileInfo;
+import ikabi.com.mobilesafe.dao.DFile;
 
 /**
  * @ Author: Shuangjun Zou (Rob)
@@ -345,13 +349,13 @@ public class FileUtils {
         return uuid.toString();
     }
 
-    /*public static FileType getFileType(Context context, String extension) {
+    public static FileType getFileType(Context context, String extension) {
         FileType fileType;
-        if (XFileUtils.checkEndsWithInStringArray(extension, context.getResources().getStringArray(R.array.fileEndingImage))) {
+        if (FileUtils.checkEndsWithInStringArray(extension, context.getResources().getStringArray(R.array.fileEndingImage))) {
             fileType = FileType.Image;
-        } else if (XFileUtils.checkEndsWithInStringArray(extension, context.getResources().getStringArray(R.array.fileEndingAudio))) {
+        } else if (FileUtils.checkEndsWithInStringArray(extension, context.getResources().getStringArray(R.array.fileEndingAudio))) {
             fileType = FileType.Audio;
-        } else if (XFileUtils.checkEndsWithInStringArray(extension, context.getResources().getStringArray(R.array.fileEndingVideo))) {
+        } else if (FileUtils.checkEndsWithInStringArray(extension, context.getResources().getStringArray(R.array.fileEndingVideo))) {
             fileType = FileType.Video;
         } else {
             fileType = FileType.Normal;
@@ -359,7 +363,7 @@ public class FileUtils {
         return fileType;
     }
 
-    public static XFileProtocol.File buildSFile(TFileInfo fileInfo) {
+    /*public static XFileProtocol.File buildSFile(TFileInfo fileInfo) {
         XFileProtocol.File.Builder sendFile = XFileProtocol.File.newBuilder();
         sendFile.setName(fileInfo.getName());
         sendFile.setPosition(fileInfo.getPosition());
@@ -370,9 +374,9 @@ public class FileUtils {
         sendFile.setTaskId(fileInfo.getTaskId());
         sendFile.setIsSend(fileInfo.isSend());
         return sendFile.build();
-    }
+    }*/
 
-    public static TFileInfo buildTFile(XFileProtocol.File fileInfo) {
+    /*public static TFileInfo buildTFile(XFileProtocol.File fileInfo) {
         TFileInfo tFile = new TFileInfo();
         tFile.setName(fileInfo.getName());
         tFile.setPosition(fileInfo.getPosition());
@@ -384,7 +388,7 @@ public class FileUtils {
         tFile.setFrom(fileInfo.getFrom());
         tFile.setIsSend(fileInfo.getIsSend());
         return tFile;
-    }
+    }*/
 
     public static DFile buildDFile(TFileInfo tFileInfo) {
         DFile dFile = new DFile();
@@ -410,6 +414,6 @@ public class FileUtils {
                 break;
         }
         return dFile;
-    }*/
+    }
 
 }

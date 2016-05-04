@@ -8,10 +8,12 @@ import android.content.pm.PackageManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
+import ikabi.com.mobilesafe.business.model.FileType;
 import ikabi.com.mobilesafe.business.model.TFileInfo;
 import ikabi.com.mobilesafe.utils.FileUtils;
+import ikabi.com.mobilesafe.utils.Logger;
+import ikabi.com.mobilesafe.utils.StringUtils;
 
 /**
  * 搜索本地安装程序
