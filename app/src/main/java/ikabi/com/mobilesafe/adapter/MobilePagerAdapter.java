@@ -26,6 +26,7 @@ public class MobilePagerAdapter extends FragmentStatePagerAdapter {
 
     public MobilePagerAdapter(FragmentManager fm) {
         super(fm);
+
         //fragments.add(new SearchFragment());
         fragments.add(new FileExplorerFragment());
         fragments.add(new PictureFragment());
