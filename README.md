@@ -30,6 +30,7 @@
 6. 完善文件管理器功能及OTG相关功能
 
 7. FileExplorer近期主要专攻文件管理器相关功能及UI效果 处理FileExplorer中的Fragment切换问题。
+8. 整理PHP网站相关接口。调试BBS功能。
 
 ### 近期待整理功能
 
