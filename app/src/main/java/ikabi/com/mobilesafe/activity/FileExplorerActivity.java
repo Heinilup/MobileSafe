@@ -63,10 +63,10 @@ public class FileExplorerActivity extends FragmentActivity implements View.OnCli
 
     }
     void initData() {
-        tvPersonNumber.setText(String.format(getString(R.string.person_number), "0"));
-        tvCountNumber.setText(String.format(getString(R.string.count_number), "0"));
-        tvFileNumber.setText(String.format(getString(R.string.file_total_b), "0.00"));
-        device_name.setText(android.os.Build.MODEL);
+        //tvPersonNumber.setText(String.format(getString(R.string.person_number), "0"));
+        //tvCountNumber.setText(String.format(getString(R.string.count_number), "0"));
+        //tvFileNumber.setText(String.format(getString(R.string.file_total_b), "0.00"));
+        //device_name.setText(android.os.Build.MODEL);
         //startService(new Intent(this, IMService.class));
     }
 

@@ -98,6 +98,19 @@
     </style>
     <!--文件管理器Dialog样式end-->
 
+    <!--文件管理器Tab样式start-->
+    <style name="tab_home">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:textColor">@drawable/tab_btn_color_selector</item>
+        <item name="android:button">@null</item>
+    </style>
+    <!--文件管理器Tab样式end-->
+
     <style name="FullScreenTheme" parent="AppTheme">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowNoTitle">true</item>

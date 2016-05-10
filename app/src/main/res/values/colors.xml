@@ -12,6 +12,9 @@
     <color name="app_background">#FFFFFF</color>
 
     <!--FileExplorer start-->
+    <color name="font_btn_share">#FFFFFF</color>
+    <color name="tab_btn_checked">#5895F0</color>
+    <color name="tab_btn_normal">#888D90</color>
     <color name="root_listitem_normal">#FFFFFF</color>
     <color name="root_listitem_pressed">#EEEEEE</color>
     <color name="listview_divider_color">#EEEEEE</color>

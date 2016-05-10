@@ -3,6 +3,7 @@ package ikabi.com.mobilesafe.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import ikabi.com.mobilesafe.view.TabBar;
  * @ Email:seolop@gmail.com
  * @ Data:2016/5/3
  */
-public class TabMobileFragment extends Fragment implements ViewPager.OnPageChangeListener, TabBar.OnTabListener, View.OnClickListener {
+public class TabMobileFragment extends Fragment implements OnPageChangeListener, TabBar.OnTabListener, View.OnClickListener {
 
     ViewPager viewPager;
     TabBar tabBar;

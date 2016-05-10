@@ -1,22 +1,138 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
+
+        <!-- header -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60">
+
+            <RelativeLayout
+                android:id="@+id/top_connect_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60"
+                android:background="@color/app_background">
+
+                <Button
+                    android:id="@+id/btn_close"
+                    android:layout_width="@dimen/dp_25"
+                    android:layout_height="@dimen/dp_25"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:background="@drawable/btn_close_selector" />
+
+                <FrameLayout
+                    android:id="@+id/head_layout"
+                    android:layout_width="@dimen/dp_45"
+                    android:layout_height="@dimen/dp_45"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_toRightOf="@id/btn_close">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@mipmap/avatar_default" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|bottom"
+                        android:background="@mipmap/connect_badge_android" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/txt_connect_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_toRightOf="@id/head_layout"
+                    android:text="SM-3812"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_14" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/top_main_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60"
+                android:background="@color/app_background">
+
+                <Button
+                    android:id="@+id/btn_share"
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/blue_selector"
+                    android:text="@string/connect_firend"
+                    android:textColor="@color/font_btn_share"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/btn_more_selector" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="#EEEEEE"
+            android:contentDescription="@null" />
+
+        <!-- body -->
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- cursor -->
+        <ImageView
+            android:id="@+id/ivCursor"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="asdsad"/>
-    <FrameLayout
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+            android:contentDescription="@null"
+            android:scaleType="matrix"
+            android:src="@mipmap/tab_mobile_arrow_down_blue" />
+
+        <!-- tab-->
+        <RadioGroup
+            android:id="@+id/rg_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rdb_mobile"
+                style="@style/tab_home"
+                android:text="@string/mobile" />
+
+            <RadioButton
+                android:id="@+id/rdb_message"
+                style="@style/tab_home"
+                android:text="@string/message" />
+        </RadioGroup>
+
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/fileThumb"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:contentDescription="@null" />
 </RelativeLayout>
