@@ -31,4 +31,7 @@ dependencies {
     compile project(':boommenu')
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'se.emilsjolander:stickylistheaders:2.7.0'
+    compile files('libs/klog.jar')
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'cz.msebera.android:httpclient:4.3.6'
 }
