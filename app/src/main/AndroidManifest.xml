@@ -44,6 +44,7 @@
         <activity android:name=".activity.SwipeActivity"/>
         <activity android:name=".activity.BoomMenuActivity"/>
         <activity android:name=".activity.KlogActivity"/>
+        <activity android:name=".activity.DeskViewActivity"/>
 
         <!--FileExplorer-->
         <activity android:name=".activity.FileExplorerActivity"
