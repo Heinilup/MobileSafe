@@ -31,7 +31,7 @@
 
 7. FileExplorer近期主要专攻文件管理器相关功能及UI效果 处理FileExplorer中的Fragment切换问题。
 8. 整理PHP网站相关接口。调试BBS功能。20160507 这几天忙着培训站点，这个项目更新又得放缓了，sry。repost, repost again. having some diffcult bugs. have long time to work. repost again.
-9. 近期准备重新整理OTA在线升级系统。学习一下CM、以及Mokee的代码。
+9. 近期准备重新整理OTA在线升级系统。学习一下CM、以及Mokee的代码。系统升级流程
 10. 在系统中通过文件模式控制WIFI 和 蓝牙的控制。
 11. 开始整理SystemUI 中的 RecentsActivity的方法。移除Android M中  rencents方法
 
