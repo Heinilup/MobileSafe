@@ -50,7 +50,7 @@ Happy 6.1
 5. Mms and Messaging 由于近期负责Android源生代码的MMS模块，将陆续整理一下MMS机制及流程。
 6. Add FileExplorer to this project
 7. Calendar Sample old version and new Material Design style.
-8. Wordpress Android Client 
+8. Wordpress Android Client and IOS app
 
 ### 已完成功能
 
