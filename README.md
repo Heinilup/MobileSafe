@@ -3,7 +3,7 @@
 
 ![Mobile Safe Menu show](http://i.imgur.com/ZB1hLRN.png)
 
-陆续增加中ing...
+陆续增加中ing... hurry up.
 
 陆续整理这一年多所学知识，代码的重构等等。
 
