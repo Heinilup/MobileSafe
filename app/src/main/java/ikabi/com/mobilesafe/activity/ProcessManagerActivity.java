@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -37,6 +38,7 @@ public class ProcessManagerActivity extends Activity {
     @Bind(R.id.pm_list_view)
     ListView mListView;
     private List<ProcessInfo> mDates;
+    private ProcessAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,25 @@ public class ProcessManagerActivity extends Activity {
         mPdvMemory.setDesRightTitle("可用内存:" + Formatter.formatFileSize(this, freeMemory));
         mPdvMemory.setDesProgress((int) (usedMemory * 100f / totalMemory + 0.5f));
 
+        // 设置listView的item点击事件
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                ProcessInfo info = mDates.get(position);
+                if (info.packageName.equals(getPackageName())) {
+                    return;
+                }
+
+                // 如果选中了，就取消
+                info.checked = !info.checked;
+
+                // UI更新
+                mAdapter.notifyDataSetChanged();
+            }
+        });
         //数据加载
 
         mDates = ProcessProvider.getAllRunningProcesses(this);
