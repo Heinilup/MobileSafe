@@ -61,7 +61,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
             R.drawable.btn_mobile_open, R.drawable.btn_mobile_power_none_open, R.drawable.btn_mobile_power_sleep_open, R.drawable.btn_mobile_upgrade,
             R.drawable.btn_mobile_more, R.drawable.btn_mobile_optimize, R.drawable.btn_mobile_tools, R.drawable.btn_mobile_fonts,
             R.drawable.btn_mobile_power, R.drawable.btn_mobile_temperature, R.drawable.btn_mobile_uninstall, R.drawable.btn_mobile_open,
-            R.drawable.btn_mobile_power_none_open,R.drawable.btn_mobile_light, R.drawable.btn_mobile_power_sleep_open,
+            R.drawable.btn_mobile_power_none_open, R.drawable.btn_mobile_light, R.drawable.btn_mobile_power_sleep_open,
             R.drawable.btn_mobile_more, R.drawable.btn_mobile_fonts, R.drawable.btn_mobile_power_sleep_open};
     private GridView mGridView;
     private List<HomeItem> mDates;
@@ -86,7 +86,6 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
             item.desc = DESCS[i];
             //添加到mDates
             mDates.add(item);
-
         }
 
         //设置gridview的adapter
@@ -296,11 +295,12 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
             return view;
         }
     }
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if(init) return;
-        init =true;
+        if (init) return;
+        init = true;
         Drawable[] subButtonDrawables = new Drawable[3];
         int[] drawablesResource = new int[]{
                 R.drawable.boom,
